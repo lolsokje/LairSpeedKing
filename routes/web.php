@@ -3,7 +3,9 @@
 use App\Http\Controllers\AdminIndexController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', [HomeController::class, 'index'])->name('index');
@@ -14,4 +16,7 @@ Route::post('/auth/logout', [LogoutController::class, 'logout'])->name('auth.log
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin'], function () {
     Route::get('', AdminIndexController::class)->name('index');
+
+    Route::resource('tracks', TrackController::class);
+    Route::resource('cars', CarController::class);
 });

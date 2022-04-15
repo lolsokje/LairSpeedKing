@@ -21,8 +21,8 @@
 
 <script setup>
 const pages = [
-	{ name: 'Tracks', image: 'track-cover.jpg', route: '#' },
-	{ name: 'Cars', image: 'car-cover.jpg', route: '#' },
+	{ name: 'Tracks', image: 'track-cover.jpg', route: route('admin.tracks.index') },
+	{ name: 'Cars', image: 'car-cover.jpg', route: route('admin.cars.index') },
 	{ name: 'Times', image: 'times-cover.jpg', route: '#' },
 ];
 </script>

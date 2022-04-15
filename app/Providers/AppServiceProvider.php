@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
                 config('snowflake.data_center'),
                 config('snowflake.worker_node'))
             )
-                ->setStartTimeStamp(strtotime('2022-01-01') * 1000)
+                ->setStartTimeStamp(strtotime(config('snowflake.epoch')) * 1000)
                 ->setSequenceResolver(new RandomSequenceResolver());
         });
     }

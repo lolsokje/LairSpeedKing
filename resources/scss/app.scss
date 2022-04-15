@@ -4,4 +4,24 @@
 body {
   background-color: $dark;
   color: $color;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.table-pill {
+  transition: background-color ease-in-out 0.3s;
+  background-color: $accent;
+  border-radius: 1rem;
+
+  a {
+    transition: color ease-in-out 0.3s;
+    color: $color;
+
+    &:hover {
+      color: $primary;
+    }
+  }
 }
