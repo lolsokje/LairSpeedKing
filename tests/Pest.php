@@ -11,6 +11,31 @@
 |
 */
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 
+use Illuminate\Foundation\Testing\TestCase;
+
+use function Pest\Laravel\actingAs;
+
 uses(Tests\TestCase::class, LazilyRefreshDatabase::class)->in('Feature', 'Unit');
+
+function createUser(): User
+{
+    return User::factory()->create();
+}
+
+function createAdmin(): User
+{
+    return User::factory()->admin()->create();
+}
+
+function actingAsUser(): TestCase
+{
+    return actingAs(createUser());
+}
+
+function actingAsAdmin(): TestCase
+{
+    return actingAs(createAdmin());
+}

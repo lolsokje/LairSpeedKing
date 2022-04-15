@@ -26,7 +26,7 @@ class TrackCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'content_type' => 'in:base,dlc,mod',
+            'content_type' => 'required|in:base,dlc,mod',
             'link' => 'required_unless:content_type,base',
         ];
     }
