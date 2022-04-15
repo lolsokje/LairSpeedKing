@@ -17,7 +17,7 @@ class IsAdmin
      *
      * @return RedirectResponse|Response
      */
-    public function handle(Request $request, Closure $next): RedirectResponse|Response
+    public function handle(Request $request, Closure $next)
     {
         if (!$request->user() || !$request->user()->is_admin) {
             return to_route('index');
