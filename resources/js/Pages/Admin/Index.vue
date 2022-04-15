@@ -9,7 +9,7 @@
 						{{ page.name }}
 					</h4>
 					<p class="card-text">
-						<InertiaLink :href="page.route" class="btn btn-secondary">
+						<InertiaLink :href="page.route" class="btn btn-secondary stretched-link">
 							Manage {{ page.name.toLowerCase() }}
 						</InertiaLink>
 					</p>
