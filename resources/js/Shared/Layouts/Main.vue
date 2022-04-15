@@ -1,7 +1,7 @@
 <template>
-	<nav>
+	<nav class="navbar navbar-expand-lg my-5">
 		<div class="container">
-			<ul class="list-unstyled">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item" v-if="!user">
 					<a class="nav-link" :href="route('auth.discord.redirect')">Login</a>
 				</li>
@@ -11,9 +11,19 @@
 					</InertiaLink>
 				</li>
 			</ul>
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item">
+					<InertiaLink :href="route('admin.index')" class="btn btn-primary">
+						Admin
+					</InertiaLink>
+				</li>
+			</ul>
 		</div>
 	</nav>
-	<slot/>
+
+	<div class="container">
+		<slot/>
+	</div>
 </template>
 
 <script setup>

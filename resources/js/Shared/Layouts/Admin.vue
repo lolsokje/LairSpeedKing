@@ -1,5 +1,7 @@
 <template>
-
+	<div class="container my-5">
+		<slot/>
+	</div>
 </template>
 
 <script setup>
