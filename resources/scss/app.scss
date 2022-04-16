@@ -1,3 +1,4 @@
+@import 'mixins';
 @import 'variables';
 @import 'bootstrap';
 
@@ -9,6 +10,20 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.btn-primary {
+  @include button-hover-state($primary);
+}
+
+.btn-secondary {
+  @include button-hover-state($secondary);
 }
 
 .table-pill {

@@ -26,7 +26,7 @@
 					<input type="text" id="link" class="form-control" v-model="form.link">
 				</div>
 
-				<button v-if="formValid" class="btn btn-primary">Save</button>
+				<button v-if="formValid" class="btn btn-outline-primary">Save</button>
 			</form>
 		</div>
 	</div>

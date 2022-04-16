@@ -1,0 +1,7 @@
+@mixin button-hover-state($colour) {
+  &:hover {
+    background-color: transparent;
+    border: 1px solid $colour;
+    color: $colour;
+  }
+}

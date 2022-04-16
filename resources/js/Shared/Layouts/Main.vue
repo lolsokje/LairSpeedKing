@@ -13,7 +13,7 @@
 			</ul>
 			<ul class="navbar-nav ms-auto">
 				<li class="nav-item">
-					<InertiaLink :href="route('admin.index')" class="btn btn-primary">
+					<InertiaLink :href="route('admin.index')" class="btn btn-outline-primary">
 						Admin
 					</InertiaLink>
 				</li>

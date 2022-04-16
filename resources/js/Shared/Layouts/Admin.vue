@@ -8,7 +8,7 @@
 			</ul>
 			<ul class="navbar-nav ms-auto">
 				<li class="nav-item">
-					<InertiaLink class="btn btn-primary" :href="route('index')">Home</InertiaLink>
+					<InertiaLink class="btn btn-outline-primary" :href="route('index')">Home</InertiaLink>
 				</li>
 			</ul>
 		</div>
