@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import ContentEdit from '../../../Shared/Content/Edit';
+import ContentEdit from '@/Shared/Content/Edit';
 
 const props = defineProps({
 	track: {

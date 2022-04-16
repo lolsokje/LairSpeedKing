@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import ContentIndex from '../../../Shared/Content/Index';
+import ContentIndex from '@/Shared/Content/Index';
 
 const props = defineProps({
 	cars: {

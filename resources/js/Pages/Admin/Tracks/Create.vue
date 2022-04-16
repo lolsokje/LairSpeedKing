@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import ContentCreate from '../../../Shared/Content/Create';
+import ContentCreate from '@/Shared/Content/Create';
 
 const props = defineProps({
 	content_types: {
