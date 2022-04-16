@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ContentType;
-use App\Http\Requests\TrackCreateRequest;
+use App\Http\Requests\ContentCreateRequest;
 use App\Models\Track;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -25,7 +25,7 @@ class TrackController extends Controller
         ]);
     }
 
-    public function store(TrackCreateRequest $request): RedirectResponse
+    public function store(ContentCreateRequest $request): RedirectResponse
     {
         Track::create($request->validated());
 
@@ -47,7 +47,7 @@ class TrackController extends Controller
         ]);
     }
 
-    public function update(TrackCreateRequest $request, Track $track): RedirectResponse
+    public function update(ContentCreateRequest $request, Track $track): RedirectResponse
     {
         $track->update($request->validated());
 

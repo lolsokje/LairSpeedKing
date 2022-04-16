@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Enums\ContentType;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TrackCreateRequest extends FormRequest
+class ContentCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
