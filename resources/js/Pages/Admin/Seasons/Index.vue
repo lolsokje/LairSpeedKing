@@ -12,7 +12,7 @@
 					<h2>{{ season.name }}</h2>
 				</div>
 				<div class="card-body">
-					<p class="card-text">Weeks: 0</p>
+					<p class="card-text">Rounds: 0</p>
 					<p class="card-text">Participants: 0</p>
 					<p class="card-text">Times submitted: 0</p>
 

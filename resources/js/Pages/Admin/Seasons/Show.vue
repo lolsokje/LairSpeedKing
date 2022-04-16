@@ -3,7 +3,7 @@
 
 	<h2 class="mt-5">{{ season.name }}</h2>
 
-	<InertiaLink href="#" class="btn btn-primary my-4">Add week</InertiaLink>
+	<InertiaLink href="#" class="btn btn-primary my-4">Add round</InertiaLink>
 </template>
 
 <script setup>
