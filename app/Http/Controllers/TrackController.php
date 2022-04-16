@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\ContentType;
 use App\Http\Requests\ContentCreateRequest;
 use App\Models\Track;
+use App\Models\TrackVariation;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -27,7 +28,9 @@ class TrackController extends Controller
 
     public function store(ContentCreateRequest $request): RedirectResponse
     {
-        Track::create($request->validated());
+        $track = Track::create($request->validated());
+
+        $track->variations()->create(['name' => TrackVariation::DEFAULT_NAME]);
 
         return to_route('admin.tracks.index');
     }

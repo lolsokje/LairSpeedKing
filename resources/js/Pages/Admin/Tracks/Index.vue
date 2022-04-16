@@ -5,7 +5,7 @@
 		Add track
 	</InertiaLink>
 
-	<ContentIndex type="tracks" :content="tracks"/>
+	<ContentIndex type="tracks" :content="tracks" :has_variations="true"/>
 </template>
 
 <script setup>
