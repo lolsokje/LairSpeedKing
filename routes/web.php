@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\TrackVariationController;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin']
     Route::group(['prefix' => 'tracks/{track}', 'as' => 'tracks.'], function () {
         Route::resource('variations', TrackVariationController::class)->except('destroy');
     });
+
+    Route::resource('seasons', SeasonController::class)->except('destroy');
 });
