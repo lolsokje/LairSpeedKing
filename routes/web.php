@@ -18,8 +18,8 @@ Route::post('/auth/logout', [LogoutController::class, 'logout'])->name('auth.log
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin'], function () {
     Route::get('', AdminIndexController::class)->name('index');
 
-    Route::resource('tracks', TrackController::class);
-    Route::resource('cars', CarController::class);
+    Route::resource('tracks', TrackController::class)->except('destroy');
+    Route::resource('cars', CarController::class)->except('destroy');
 
     Route::group(['prefix' => 'tracks/{track}', 'as' => 'tracks.'], function () {
         Route::resource('variations', TrackVariationController::class)->except('destroy');
