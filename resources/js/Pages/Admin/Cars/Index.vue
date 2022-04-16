@@ -5,22 +5,12 @@
 		Add car
 	</InertiaLink>
 
-	<div>
-		<div v-for="car in cars" :key="car.id" class="py-1">
-			<div class="row p-3 table-pill">
-				<div class="col-10">{{ car.name }} - {{ car.content_type }}</div>
-				<div class="col-1">
-					<InertiaLink :href="route('admin.cars.edit', [car.id])">edit</InertiaLink>
-				</div>
-				<div class="col-1">
-					<InertiaLink :href="route('admin.cars.show', [car.id])">view</InertiaLink>
-				</div>
-			</div>
-		</div>
-	</div>
+	<ContentIndex type="cars" :content="cars"/>
 </template>
 
 <script setup>
+import ContentIndex from '../../../Shared/Content/Index';
+
 const props = defineProps({
 	cars: {
 		type: Array,
