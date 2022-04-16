@@ -11,7 +11,7 @@
 					</InertiaLink>
 				</li>
 			</ul>
-			<ul class="navbar-nav ms-auto">
+			<ul class="navbar-nav ms-auto" v-if="user && user.is_admin">
 				<li class="nav-item">
 					<InertiaLink :href="route('admin.index')" class="btn btn-outline-primary">
 						Admin
