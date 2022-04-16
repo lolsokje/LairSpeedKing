@@ -50,7 +50,7 @@ const props = defineProps({
 const form = useForm({
 	name: props.item.name,
 	content_type: props.item.content_type,
-	link: props.item.link,
+	link: props.item.link ?? '',
 });
 
 const formValid = computed(() => {
