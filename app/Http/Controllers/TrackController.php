@@ -22,7 +22,7 @@ class TrackController extends Controller
     public function create(): Response
     {
         return Inertia::render('Admin/Tracks/Create', [
-            'content_types' => ContentType::cases(),
+            'content_types' => ContentType::forRepresentation(),
         ]);
     }
 
@@ -46,7 +46,7 @@ class TrackController extends Controller
     {
         return Inertia::render('Admin/Tracks/Edit', [
             'track' => $track,
-            'content_types' => ContentType::cases(),
+            'content_types' => ContentType::forRepresentation(),
         ]);
     }
 

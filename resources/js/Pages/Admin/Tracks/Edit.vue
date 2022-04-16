@@ -15,7 +15,7 @@ const props = defineProps({
 		required: true,
 	},
 	content_types: {
-		type: Array,
+		type: Object,
 		required: true,
 	},
 });

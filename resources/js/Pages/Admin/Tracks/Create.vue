@@ -11,7 +11,7 @@ import ContentCreate from '@/Shared/Content/Create';
 
 const props = defineProps({
 	content_types: {
-		type: Array,
+		type: Object,
 		required: true,
 	},
 });

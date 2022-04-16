@@ -13,11 +13,13 @@
 				<div class="mb-3">
 					<label for="content_type" class="form-label">Content type</label>
 					<select id="content_type" v-model="form.content_type" class="form-select" required>
-						<option v-for="content_type in content_types" :value="content_type">{{ content_type }}</option>
+						<option v-for="(content_type, key) in content_types" :value="parseInt(key)">
+							{{ content_type }}
+						</option>
 					</select>
 				</div>
 
-				<div class="mb-3" v-if="form.content_type !== 'base'">
+				<div class="mb-3" v-if="form.content_type !== 1">
 					<label for="link" class="form-label">Download/Purchase link</label>
 					<input type="text" id="link" class="form-control" v-model="form.link">
 				</div>
@@ -42,19 +44,19 @@ const props = defineProps({
 		required: true,
 	},
 	content_types: {
-		type: Array,
+		type: Object,
 		required: true,
 	},
 });
 
 const form = useForm({
 	name: props.item.name,
-	content_type: props.item.content_type,
+	content_type: parseInt(props.item.content_type),
 	link: props.item.link ?? '',
 });
 
 const formValid = computed(() => {
-	if (form.content_type === 'base') {
+	if (form.content_type === 1) {
 		return form.name.length >= 3;
 	} else {
 		return form.name.length >= 3 && form.link.length >= 3;

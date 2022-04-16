@@ -21,7 +21,7 @@ class CarController extends Controller
     public function create(): Response
     {
         return Inertia::render('Admin/Cars/Create', [
-            'content_types' => ContentType::cases(),
+            'content_types' => ContentType::forRepresentation(),
         ]);
     }
 
@@ -43,7 +43,7 @@ class CarController extends Controller
     {
         return Inertia::render('Admin/Cars/Edit', [
             'car' => $car,
-            'content_types' => ContentType::cases(),
+            'content_types' => ContentType::forRepresentation(),
         ]);
     }
 

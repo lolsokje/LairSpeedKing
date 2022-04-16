@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\ContentType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class ContentCreateRequest extends FormRequest
 {
@@ -26,8 +27,8 @@ class ContentCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'content_type' => 'required|in:base,dlc,mod',
-            'link' => 'required_unless:content_type,base',
+            'content_type' => ['required', new Enum(ContentType::class)],
+            'link' => 'required_unless:content_type,1',
         ];
     }
 }

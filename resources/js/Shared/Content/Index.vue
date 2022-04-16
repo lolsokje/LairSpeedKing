@@ -2,7 +2,7 @@
 	<div>
 		<div v-for="item in content" :key="item.id" class="py-1">
 			<div class="row p-3 table-pill">
-				<div :class="has_variations ? 'col-9' : 'col-10'">{{ item.name }} - {{ item.content_type }}</div>
+				<div :class="has_variations ? 'col-9' : 'col-10'">{{ item.name }} - {{ item.content_type_name }}</div>
 				<div class="col-1">
 					<InertiaLink :href="route(`admin.${type}.edit`, [item.id])">edit</InertiaLink>
 				</div>
