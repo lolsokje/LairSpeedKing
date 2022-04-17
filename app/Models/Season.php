@@ -4,16 +4,18 @@ namespace App\Models;
 
 use App\Traits\DateRangeAttribute;
 use App\Traits\Snowflake;
+use App\Traits\StatusAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Season extends Model
 {
-    use HasFactory, Snowflake, DateRangeAttribute;
+    use HasFactory, Snowflake, DateRangeAttribute, StatusAttribute;
 
     protected $appends = [
         'date_range',
+        'status',
     ];
 
     public function setStartAndEndDate()

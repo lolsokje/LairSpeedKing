@@ -25,6 +25,9 @@
 						</InertiaLink>
 					</div>
 				</div>
+				<div class="card-footer status" :class="'status-' + season.status.toLowerCase()">
+					{{ season.status }}
+				</div>
 			</div>
 		</div>
 	</div>
