@@ -34,6 +34,8 @@ class RoundController extends Controller
     {
         $season->rounds()->create($request->validated());
 
+        $season->setStartAndEndDate();
+
         return to_route('admin.seasons.rounds.index', [$season]);
     }
 
@@ -55,6 +57,8 @@ class RoundController extends Controller
     public function update(RoundCreateRequest $request, Season $season, Round $round): RedirectResponse
     {
         $round->update($request->validated());
+
+        $season->setStartAndEndDate();
 
         return to_route('admin.seasons.rounds.index', [$season]);
     }

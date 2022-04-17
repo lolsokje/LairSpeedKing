@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\DateRangeAttribute;
 use App\Traits\Snowflake;
 use DateTime;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Round extends Model
 {
-    use HasFactory, Snowflake;
+    use HasFactory, Snowflake, DateRangeAttribute;
 
     protected $hidden = [
         'created_at',
@@ -36,15 +37,6 @@ class Round extends Model
         } else {
             return 'Active';
         }
-    }
-
-    public function getDateRangeAttribute(): string
-    {
-        $format = 'F jS Y';
-        $start = DateTime::createFromFormat('Y-m-d', $this->starts_at)->format($format);
-        $end = DateTime::createFromFormat('Y-m-d', $this->ends_at)->format($format);
-
-        return "$start - $end";
     }
 
     public function scopeActive(Builder $query): void

@@ -8,12 +8,11 @@
 	<div class="row" v-if="seasons.length">
 		<div class="col-4 mb-4" v-for="season in seasons" :key="season.id">
 			<div class="card">
-				<div class="card-header">
-					<h2>{{ season.name }}</h2>
-				</div>
 				<div class="card-body">
-					<p class="card-text">Rounds: 0</p>
-					<p class="card-text">Participants: 0</p>
+					<h5 class="card-title">{{ season.name }}</h5>
+					<h6 class="card-subtitle text-muted mb-2">{{ season.date_range }}</h6>
+					<p class="card-text mb-0">Rounds: 0</p>
+					<p class="card-text mb-0">Participants: 0</p>
 					<p class="card-text">Times submitted: 0</p>
 
 					<div class="d-flex">

@@ -15,6 +15,8 @@ return new class extends Migration {
         Schema::create('seasons', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->string('name');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }
