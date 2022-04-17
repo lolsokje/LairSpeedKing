@@ -48,3 +48,23 @@ a {
     }
   }
 }
+
+.status {
+  font-weight: 700;
+  text-align: center;
+}
+
+.status-completed {
+  background-color: white;
+  color: black;
+}
+
+.status-active {
+  background-color: $success;
+  color: black;
+}
+
+.status-pending {
+  background-color: $primary;
+  color: white;
+}

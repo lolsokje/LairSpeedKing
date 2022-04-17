@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoundController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\TrackVariationController;
@@ -27,4 +28,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin']
     });
 
     Route::resource('seasons', SeasonController::class)->except('destroy');
+
+    Route::group(['prefix' => 'seasons/{season}', 'as' => 'seasons.'], function () {
+        Route::resource('rounds', RoundController::class)->except('destroy');
+    });
 });

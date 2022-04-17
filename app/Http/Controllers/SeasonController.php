@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeasonCreateRequest;
 use App\Http\Requests\SeasonUpdateRequest;
+use App\Models\Car;
 use App\Models\Season;
+use App\Models\Track;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -33,7 +35,7 @@ class SeasonController extends Controller
     public function show(Season $season): Response
     {
         return Inertia::render('Admin/Seasons/Show', [
-            'season' => $season,
+            'season' => $season->load('rounds'),
         ]);
     }
 
