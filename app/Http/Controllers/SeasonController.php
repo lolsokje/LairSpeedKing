@@ -16,7 +16,7 @@ class SeasonController extends Controller
     public function index(): Response
     {
         return Inertia::render('Admin/Seasons/Index', [
-            'seasons' => Season::all(),
+            'seasons' => Season::query()->withCount('rounds')->get(),
         ]);
     }
 

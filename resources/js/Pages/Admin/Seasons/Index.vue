@@ -11,7 +11,7 @@
 				<div class="card-body">
 					<h5 class="card-title">{{ season.name }}</h5>
 					<h6 class="card-subtitle text-muted mb-2">{{ season.date_range }}</h6>
-					<p class="card-text mb-0">Rounds: 0</p>
+					<p class="card-text mb-0">Rounds: {{ season.rounds_count }}</p>
 					<p class="card-text mb-0">Participants: 0</p>
 					<p class="card-text">Times submitted: 0</p>
 
