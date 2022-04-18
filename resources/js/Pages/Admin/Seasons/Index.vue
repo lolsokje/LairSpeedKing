@@ -1,9 +1,9 @@
 <template>
-	<InertiaLink :href="route('admin.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.index')"/>
 
-	<h2 class="mt-5">Seasons</h2>
+	<AdminHeader text="Seasons"/>
 
-	<InertiaLink :href="route('admin.seasons.create')" class="btn btn-primary my-4">Add season</InertiaLink>
+	<InertiaLink :href="route('admin.seasons.create')" class="btn btn-primary mb-4">Add season</InertiaLink>
 
 	<div class="row" v-if="seasons.length">
 		<div class="col-4 mb-4" v-for="season in seasons" :key="season.id">
@@ -34,6 +34,9 @@
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
+
 const props = defineProps({
 	seasons: {
 		type: Array,

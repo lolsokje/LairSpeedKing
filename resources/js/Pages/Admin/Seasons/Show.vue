@@ -1,7 +1,7 @@
 <template>
-	<InertiaLink :href="route('admin.seasons.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.seasons.index')"/>
 
-	<h2 class="mt-5">{{ season.name }}</h2>
+	<AdminHeader :text="season.name"/>
 
 	<div class="row">
 		<div class="col-4 mb-3" v-for="(page, key) in pages" :key="key">
@@ -21,6 +21,9 @@
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
+
 const props = defineProps({
 	season: {
 		type: Object,

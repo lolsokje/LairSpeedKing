@@ -1,13 +1,15 @@
 <template>
-	<InertiaLink :href="route('admin.tracks.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<h2 class="my-5">Add track</h2>
+	<AdminHeader text="Add track"/>
 
 	<ContentCreate type="tracks" :content_types="content_types"/>
 </template>
 
 <script setup>
 import ContentCreate from '@/Shared/Content/Create';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const props = defineProps({
 	content_types: {

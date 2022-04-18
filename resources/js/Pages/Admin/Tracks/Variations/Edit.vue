@@ -1,7 +1,7 @@
 <template>
-	<InertiaLink :href="route('admin.tracks.variations.index', [track])">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.tracks.variations.index', [track])"/>
 
-	<h2 class="my-5">Add track variations</h2>
+	<AdminHeader :text="'Edit track variation ' + variation.name"/>
 
 	<div class="card">
 		<div class="card-body">
@@ -19,6 +19,8 @@
 
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const props = defineProps({
 	track: {

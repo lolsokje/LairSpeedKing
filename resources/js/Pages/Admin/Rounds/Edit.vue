@@ -1,7 +1,7 @@
 <template>
-	<InertiaLink :href="route('admin.seasons.rounds.index', [season])">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.seasons.rounds.index', [season])"/>
 
-	<h2 class="mt-5">Edit round "{{ round.name }}"</h2>
+	<AdminHeader :text="'Edit round ' + round.name"/>
 
 	<div class="card">
 		<div class="card-body">
@@ -26,7 +26,10 @@
 					<div class="col-4">
 						<label for="track" class="form-label">Track</label>
 						<select id="track" class="form-select" v-model="selectedTrackId">
-							<option v-for="track in tracks" :key="track.id" :value="track.id">{{ track.name }}</option>
+							<option v-for="track in tracks" :key="track.id" :value="track.id">{{
+									track.name
+								}}
+							</option>
 						</select>
 					</div>
 
@@ -62,6 +65,8 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed, onMounted, ref, watch } from 'vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const props = defineProps({
 	season: {

@@ -1,13 +1,14 @@
 <template>
-	<InertiaLink :href="route('admin.cars.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.cars.index')"/>
 
-	<h2 class="my-5">Add car</h2>
+	<AdminHeader text="Add car"/>
 
 	<ContentCreate type="cars" :content_types="content_types"/>
 </template>
 
 <script setup>
 import ContentCreate from '@/Shared/Content/Create';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const props = defineProps({
 	content_types: {

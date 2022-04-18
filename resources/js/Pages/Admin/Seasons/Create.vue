@@ -1,7 +1,7 @@
 <template>
-	<InertiaLink :href="route('admin.seasons.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.seasons.index')"/>
 
-	<h2 class="my-5">Add season</h2>
+	<AdminHeader text="Add season"/>
 
 	<div class="card">
 		<div class="card-body">
@@ -23,6 +23,8 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const form = useForm({
 	name: '',

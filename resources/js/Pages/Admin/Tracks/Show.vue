@@ -1,10 +1,13 @@
 <template>
-	<InertiaLink :href="route('admin.tracks.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<h2 class="my-5">{{ track.name }}</h2>
+	<AdminHeader :text="track.name"/>
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
+
 const props = defineProps({
 	track: {
 		type: Object,

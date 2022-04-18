@@ -1,9 +1,9 @@
 <template>
-	<InertiaLink :href="route('admin.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.index')"/>
 
-	<h2 class="mt-5">Manage tracks</h2>
+	<AdminHeader text="Manage tracks"/>
 
-	<InertiaLink :href="route('admin.tracks.create')" class="btn btn-primary ms-auto my-4">
+	<InertiaLink :href="route('admin.tracks.create')" class="btn btn-primary mb-4">
 		Add track
 	</InertiaLink>
 
@@ -11,7 +11,9 @@
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
 import ContentIndex from '@/Shared/Content/Index';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const props = defineProps({
 	tracks: {

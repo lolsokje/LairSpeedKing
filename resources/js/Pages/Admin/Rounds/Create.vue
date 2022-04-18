@@ -1,7 +1,7 @@
 <template>
-	<InertiaLink :href="route('admin.seasons.rounds.index', [season])">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.seasons.rounds.index', [season])"/>
 
-	<h2 class="mt-5">Add round to {{ season.name }}</h2>
+	<AdminHeader :text="'Add round to ' + season.name"/>
 
 	<div class="card">
 		<div class="card-body">
@@ -62,6 +62,8 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed, ref, watch } from 'vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
 
 const props = defineProps({
 	season: {

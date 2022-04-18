@@ -1,9 +1,9 @@
 <template>
-	<InertiaLink :href="route('admin.tracks.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<h2 class="mt-5">Manage track variations for {{ track.name }}</h2>
+	<AdminHeader :text="'Manage track variations for ' + track.name"/>
 
-	<InertiaLink :href="route('admin.tracks.variations.create', [track])" class="btn btn-primary ms-auto my-4">
+	<InertiaLink :href="route('admin.tracks.variations.create', [track])" class="btn btn-primary ms-auto mb-4">
 		Add track variation
 	</InertiaLink>
 
@@ -12,10 +12,12 @@
 			<div class="row p-3 table-pill">
 				<div class="col-10">{{ variation.name }}</div>
 				<div class="col-1">
-					<InertiaLink :href="route('admin.tracks.variations.edit', [track, variation])">edit</InertiaLink>
+					<InertiaLink :href="route('admin.tracks.variations.edit', [track, variation])">edit
+					</InertiaLink>
 				</div>
 				<div class="col-1">
-					<InertiaLink :href="route('admin.tracks.variations.show', [track, variation])">view</InertiaLink>
+					<InertiaLink :href="route('admin.tracks.variations.show', [track, variation])">view
+					</InertiaLink>
 				</div>
 			</div>
 		</div>
@@ -23,6 +25,9 @@
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
+
 const props = defineProps({
 	track: {
 		type: Object,

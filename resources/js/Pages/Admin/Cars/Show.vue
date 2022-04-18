@@ -1,10 +1,13 @@
 <template>
-	<InertiaLink :href="route('admin.cars.index')">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.cars.index')"/>
 
-	<h2 class="my-5">{{ car.name }}</h2>
+	<AdminHeader :text="car.name"/>
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
+
 const props = defineProps({
 	car: {
 		type: Object,

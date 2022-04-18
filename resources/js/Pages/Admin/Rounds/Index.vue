@@ -1,9 +1,9 @@
 <template>
-	<InertiaLink :href="route('admin.seasons.show', [season])">&larr; back to overview</InertiaLink>
+	<BackToOverviewButton :link="route('admin.seasons.show', [season])"/>
 
-	<h2 class="mt-5">Manage rounds</h2>
+	<AdminHeader text="Manage rounds"/>
 
-	<InertiaLink :href="route('admin.seasons.rounds.create', [season])" class="btn btn-primary my-4">
+	<InertiaLink :href="route('admin.seasons.rounds.create', [season])" class="btn btn-primary mb-4">
 		Add round
 	</InertiaLink>
 
@@ -32,6 +32,9 @@
 </template>
 
 <script setup>
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import AdminHeader from '@/Shared/AdminHeader';
+
 const props = defineProps({
 	season: {
 		type: Object,
