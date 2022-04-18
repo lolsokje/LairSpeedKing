@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.seasons.index')"/>
 
-	<AdminHeader :text="'Edit ' + season.name"/>
+	<Header :text="'Edit ' + season.name"/>
 
 	<div class="card">
 		<div class="card-body">
@@ -24,7 +24,7 @@
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	season: {

@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.seasons.rounds.index', [season])"/>
 
-	<AdminHeader :text="'Edit round ' + round.name"/>
+	<Header :text="'Edit round ' + round.name"/>
 
 	<div class="card">
 		<div class="card-body">
@@ -66,7 +66,7 @@
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed, onMounted, ref, watch } from 'vue';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	season: {

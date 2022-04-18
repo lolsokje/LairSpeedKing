@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.seasons.index')"/>
 
-	<AdminHeader :text="season.name"/>
+	<Header :text="season.name"/>
 
 	<div class="row">
 		<div class="col-4 mb-3" v-for="(page, key) in pages" :key="key">
@@ -22,7 +22,7 @@
 
 <script setup>
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	season: {

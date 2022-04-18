@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<AdminHeader :text="'Manage track variations for ' + track.name"/>
+	<Header :text="'Manage track variations for ' + track.name"/>
 
 	<InertiaLink :href="route('admin.tracks.variations.create', [track])" class="btn btn-primary ms-auto mb-4">
 		Add track variation
@@ -26,7 +26,7 @@
 
 <script setup>
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	track: {

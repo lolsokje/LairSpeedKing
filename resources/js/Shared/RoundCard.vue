@@ -10,15 +10,15 @@
 				<p class="card-text">Variation: {{ round.variation.name }}</p>
 
 				<div class="d-flex">
-					<InertiaLink href="#" class="btn btn-primary">
+					<InertiaLink href="#" class="btn btn-primary" v-if="hasResults">
 						Results
 					</InertiaLink>
-					<InertiaLink href="#" class="btn btn-outline-secondary ms-auto" v-if="round.status === 'Active'">
+					<InertiaLink href="#" class="btn btn-outline-secondary ms-auto" v-if="canSubmit">
 						Submit time
 					</InertiaLink>
 				</div>
 			</div>
-			<div class="card-footer status" :class="'status-' + round.status.toLowerCase()">
+			<div class="card-footer status" :class="footerClass">
 				{{ round.status }}
 			</div>
 		</div>
@@ -32,6 +32,10 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const canSubmit = props.round.status === 'Active';
+const footerClass = `status-${props.round.status.toLowerCase()}`;
+const hasResults = props.round.status === 'Active' | props.round.status === 'Completed';
 </script>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<AdminHeader text="Add track"/>
+	<Header text="Add track"/>
 
 	<ContentCreate type="tracks" :content_types="content_types"/>
 </template>
@@ -9,7 +9,7 @@
 <script setup>
 import ContentCreate from '@/Shared/Content/Create';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	content_types: {

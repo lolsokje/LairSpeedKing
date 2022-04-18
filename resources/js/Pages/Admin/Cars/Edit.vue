@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.cars.index')"/>
 
-	<AdminHeader :text="'Update ' + car.name"/>
+	<Header :text="'Update ' + car.name"/>
 
 	<ContentEdit type="cars" :item="car" :content_types="content_types"/>
 </template>
@@ -9,7 +9,7 @@
 <script setup>
 import ContentEdit from '@/Shared/Content/Edit';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	car: {

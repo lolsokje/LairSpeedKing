@@ -12,5 +12,5 @@ defineProps({
 </script>
 
 <script>
-export default { name: 'AdminHeader' };
+export default { name: 'Header' };
 </script>

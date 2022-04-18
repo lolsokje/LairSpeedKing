@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.index')"/>
 
-	<AdminHeader text="Manage cars"/>
+	<Header text="Manage cars"/>
 
 	<InertiaLink :href="route('admin.cars.create')" class="btn btn-primary ms-auto mb-4">
 		Add car
@@ -13,7 +13,7 @@
 <script setup>
 import ContentIndex from '@/Shared/Content/Index';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	cars: {

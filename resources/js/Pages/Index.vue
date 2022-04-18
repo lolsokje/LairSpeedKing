@@ -1,12 +1,12 @@
 <template>
 	<div v-if="active" class="mb-5">
-		<h2>Active season</h2>
+		<Header text="Active season"/>
 
 		<SeasonCard :season="active" class="col-4"/>
 	</div>
 
 	<div v-if="pending.length">
-		<h2>Upcoming seasons</h2>
+		<Header text="Upcoming seasons"/>
 
 		<div class="container">
 			<div class="row">
@@ -16,12 +16,13 @@
 	</div>
 
 	<div v-if="completed.length">
-		<h2>Past seasons</h2>
+		<Header text="Past seasons"/>
 	</div>
 </template>
 
 <script setup>
 import SeasonCard from '@/Shared/SeasonCard';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	active: {

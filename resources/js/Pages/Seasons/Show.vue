@@ -1,5 +1,5 @@
 <template>
-	<h2>{{ season.name }}</h2>
+	<Header :text="season.name"/>
 
 	<div v-if="active" class="mb-5">
 		<RoundCard :round="active" class="col-4"/>
@@ -20,6 +20,7 @@
 
 <script setup>
 import RoundCard from '@/Shared/RoundCard';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	season: {

@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.index')"/>
 
-	<AdminHeader text="Seasons"/>
+	<Header text="Seasons"/>
 
 	<InertiaLink :href="route('admin.seasons.create')" class="btn btn-primary mb-4">Add season</InertiaLink>
 
@@ -35,7 +35,7 @@
 
 <script setup>
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	seasons: {

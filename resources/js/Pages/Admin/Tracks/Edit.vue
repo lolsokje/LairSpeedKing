@@ -1,7 +1,7 @@
 <template>
 	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<AdminHeader :text="'Update ' + track.name"/>
+	<Header :text="'Update ' + track.name"/>
 
 	<ContentEdit type="tracks" :item="track" :content_types="content_types"/>
 </template>
@@ -9,7 +9,7 @@
 <script setup>
 import ContentEdit from '@/Shared/Content/Edit';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	track: {

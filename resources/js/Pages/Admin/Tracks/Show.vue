@@ -1,12 +1,12 @@
 <template>
 	<BackToOverviewButton :link="route('admin.tracks.index')"/>
 
-	<AdminHeader :text="track.name"/>
+	<Header :text="track.name"/>
 </template>
 
 <script setup>
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import AdminHeader from '@/Shared/AdminHeader';
+import Header from '@/Shared/Header';
 
 const props = defineProps({
 	track: {
