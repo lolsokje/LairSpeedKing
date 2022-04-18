@@ -10,10 +10,11 @@
 				<p class="card-text">Variation: {{ round.variation.name }}</p>
 
 				<div class="d-flex">
-					<InertiaLink href="#" class="btn btn-primary" v-if="hasResults">
+					<InertiaLink :href="route('times.show', [round])" class="btn btn-primary" v-if="hasResults">
 						Results
 					</InertiaLink>
-					<InertiaLink href="#" class="btn btn-outline-secondary ms-auto" v-if="canSubmit">
+					<InertiaLink :href="route('times.create')" class="btn btn-outline-secondary ms-auto"
+								 v-if="canSubmit">
 						Submit time
 					</InertiaLink>
 				</div>

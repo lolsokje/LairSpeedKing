@@ -7,13 +7,25 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RoundController;
 use App\Http\Controllers\SeasonController;
+use App\Http\Controllers\ShowCurrentLapTimeLeaderboardController;
+use App\Http\Controllers\ShowLapTimesController;
 use App\Http\Controllers\ShowSeasonController;
+use App\Http\Controllers\ShowSubmitTimePageController;
+use App\Http\Controllers\SubmitLapTimeController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\TrackVariationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', IndexController::class)->name('index');
 Route::get('seasons/{season}', ShowSeasonController::class)->name('seasons.show');
+
+Route::get('leaderboard', ShowCurrentLapTimeLeaderboardController::class)->name('leaderboard');
+
+Route::middleware('verify_authenticated')->group(function () {
+    Route::get('times', ShowSubmitTimePageController::class)->name('times.create');
+    Route::post('times', SubmitLapTimeController::class)->name('times.store');
+    Route::get('times/{round}', ShowLapTimesController::class)->name('times.show');
+});
 
 Route::get('/auth/discord/redirect', [DiscordController::class, 'redirect'])->name('auth.discord.redirect');
 Route::get('/auth/discord/callback', [DiscordController::class, 'callback'])->name('auth.discord.callback');

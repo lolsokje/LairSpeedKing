@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Round;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -44,6 +45,7 @@ class HandleInertiaRequests extends Middleware
             'auth.user' => fn() => $request->user()
                 ? $request->user()->only('id', 'username', 'avatar', 'is_admin')
                 : null,
+            'has_active_round' => fn() => Round::active()->first() !== null,
         ]);
     }
 }

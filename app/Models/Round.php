@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\LapTimeStatus;
 use App\Traits\DateRangeAttribute;
 use App\Traits\Snowflake;
 use App\Traits\StatusAttribute;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Round extends Model
 {
@@ -46,5 +48,21 @@ class Round extends Model
     public function car(): BelongsTo
     {
         return $this->belongsTo(Car::class);
+    }
+
+    public function times(): HasMany
+    {
+        return $this->hasMany(LapTime::class);
+    }
+
+    public function timesForLeaderboard(): array
+    {
+        $times = $this->times()
+            ->with('user')
+            ->orderBy('lap_time')
+            ->where('status', LapTimeStatus::APPROVED)
+            ->get();
+
+        return $times->unique('user_id')->values()->toArray();
     }
 }
