@@ -20,7 +20,8 @@
 					</InertiaLink>
 				</li>
 				<li class="nav-item">
-					<InertiaLink :href="route('admin.index')" class="btn btn-outline-primary nav-link">
+					<InertiaLink :href="route('admin.index')"
+								 class="btn btn-outline-secondary nav-link nav-link-secondary">
 						Admin
 					</InertiaLink>
 				</li>

@@ -53,7 +53,7 @@
 					</div>
 				</div>
 
-				<button type="submit" class="btn btn-outline-primary" v-if="formValid">Save</button>
+				<button type="submit" class="btn btn-primary" v-if="formValid">Save</button>
 			</form>
 		</div>
 	</div>

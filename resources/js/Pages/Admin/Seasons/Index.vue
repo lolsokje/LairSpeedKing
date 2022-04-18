@@ -20,7 +20,7 @@
 							View season
 						</InertiaLink>
 						<InertiaLink :href="route('admin.seasons.edit', [season])"
-									 class="btn btn-outline-primary ms-auto">
+									 class="btn btn-outline-secondary ms-auto">
 							Edit season
 						</InertiaLink>
 					</div>

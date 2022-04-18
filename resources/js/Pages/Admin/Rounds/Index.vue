@@ -19,7 +19,7 @@
 						<p class="card-text mb-0">Track: {{ round.variation.track.name }}</p>
 						<p class="card-text">Variation: {{ round.variation.name }}</p>
 						<InertiaLink :href="route('admin.seasons.rounds.edit', [season, round])"
-									 class="btn btn-outline-primary">Edit
+									 class="btn btn-primary">Edit
 						</InertiaLink>
 					</div>
 					<div class="card-footer status" :class="'status-' + round.status.toLowerCase()">
