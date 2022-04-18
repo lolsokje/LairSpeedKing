@@ -1,4 +1,6 @@
 <template>
+	<BackToOverviewButton :link="route('index')"/>
+
 	<Header :text="season.name"/>
 
 	<div v-if="active" class="mb-5">
@@ -21,6 +23,7 @@
 <script setup>
 import RoundCard from '@/Shared/RoundCard';
 import Header from '@/Shared/Header';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton';
 
 const props = defineProps({
 	season: {
