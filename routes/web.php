@@ -4,14 +4,16 @@ use App\Http\Controllers\AdminIndexController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RoundController;
 use App\Http\Controllers\SeasonController;
+use App\Http\Controllers\ShowSeasonController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\TrackVariationController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('', [HomeController::class, 'index'])->name('index');
+Route::get('', IndexController::class)->name('index');
+Route::get('seasons/{season}', ShowSeasonController::class)->name('seasons.show');
 
 Route::get('/auth/discord/redirect', [DiscordController::class, 'redirect'])->name('auth.discord.redirect');
 Route::get('/auth/discord/callback', [DiscordController::class, 'callback'])->name('auth.discord.callback');

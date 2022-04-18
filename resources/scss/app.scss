@@ -30,8 +30,20 @@ a {
   @include button-hover-state($primary);
 }
 
+.btn-outline-primary {
+  &:hover {
+    color: white;
+  }
+}
+
 .btn-secondary {
   @include button-hover-state($secondary);
+}
+
+.btn-outline-secondary {
+  &:hover {
+    color: black;
+  }
 }
 
 .table-pill {
