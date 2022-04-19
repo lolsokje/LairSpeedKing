@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\LapTimeStatus;
 use App\Traits\Snowflake;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,7 @@ class LapTime extends Model
 
     protected $appends = [
         'readable_lap_time',
+        'status_text',
     ];
 
     protected $casts = [
@@ -46,6 +48,18 @@ class LapTime extends Model
 
             return "$minutes:$seconds.$millis";
         });
+    }
+
+    public function statusText(): Attribute
+    {
+        return Attribute::get(function () {
+            return ucfirst(strtolower($this->status->name));
+        });
+    }
+
+    public function scopePending(Builder $query): void
+    {
+        $query->where('status', LapTimeStatus::SUBMITTED);
     }
 
     public function round(): BelongsTo

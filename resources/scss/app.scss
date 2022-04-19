@@ -46,6 +46,14 @@ a {
   }
 }
 
+.btn-success {
+  @include button-hover-state($success);
+}
+
+.btn-danger {
+  @include button-hover-state($danger);
+}
+
 .nav-link-secondary {
   color: $secondary;
 }
@@ -90,5 +98,5 @@ a {
 }
 
 .status-unknown {
-  background-color: $warning;
+  background-color: $danger;
 }

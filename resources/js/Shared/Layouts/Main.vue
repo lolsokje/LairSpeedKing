@@ -29,7 +29,7 @@
 				<li class="nav-item" v-if="user && user.is_admin">
 					<InertiaLink :href="route('admin.index')"
 								 class="btn btn-outline-secondary nav-link nav-link-secondary">
-						Admin
+						Admin <span class="badge bg-danger ms-2" v-if="pendingLapTimes">{{ pendingLapTimes }}</span>
 					</InertiaLink>
 				</li>
 			</ul>
@@ -47,6 +47,7 @@ import { usePage } from '@inertiajs/inertia-vue3';
 
 const user = computed(() => usePage().props.value.auth.user);
 const hasActiveRound = computed(() => usePage().props.value.has_active_round);
+const pendingLapTimes = computed(() => usePage().props.value.pending_laptimes);
 </script>
 
 <script>

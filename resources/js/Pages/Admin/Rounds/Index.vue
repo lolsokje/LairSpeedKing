@@ -18,9 +18,17 @@
 						<p class="card-text mb-0">Car: {{ round.car.name }}</p>
 						<p class="card-text mb-0">Track: {{ round.variation.track.name }}</p>
 						<p class="card-text">Variation: {{ round.variation.name }}</p>
-						<InertiaLink :href="route('admin.seasons.rounds.edit', [season, round])"
-									 class="btn btn-primary">Edit
-						</InertiaLink>
+
+						<div class="d-flex">
+							<InertiaLink :href="route('admin.seasons.rounds.edit', [season, round])"
+										 class="btn btn-primary">Edit
+							</InertiaLink>
+							<InertiaLink :href="route('admin.seasons.rounds.times.index', [season, round])"
+										 class="btn btn-outline-secondary ms-auto"
+										 v-if="round.status !== 'Pending'">
+								Results
+							</InertiaLink>
+						</div>
 					</div>
 					<div class="card-footer status" :class="'status-' + round.status.toLowerCase()">
 						{{ round.status }}

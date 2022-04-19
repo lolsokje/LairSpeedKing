@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ApproveLapTimeController;
+use App\Http\Controllers\Admin\DenyLapTimeController;
+use App\Http\Controllers\Admin\ShowPendingLapTimesController;
+use App\Http\Controllers\Admin\ShowRoundLapTimesController;
 use App\Http\Controllers\AdminIndexController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -45,5 +49,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin']
 
     Route::group(['prefix' => 'seasons/{season}', 'as' => 'seasons.'], function () {
         Route::resource('rounds', RoundController::class)->except('destroy');
+
+        Route::group(['prefix' => 'rounds/{round}', 'as' => 'rounds.'], function () {
+            Route::get('times', ShowRoundLapTimesController::class)->name('times.index');
+            Route::get('times/pending', ShowPendingLapTimesController::class)->name('times.pending');
+            Route::patch('times/{time}/approve', ApproveLapTimeController::class)->name('times.approve');
+            Route::patch('times/{time}/deny', DenyLapTimeController::class)->name('times.deny');
+        });
     });
 });
