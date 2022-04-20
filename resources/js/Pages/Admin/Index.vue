@@ -1,7 +1,7 @@
 <template>
 	<h1 class="my-4">Lair Speed King Championship Management</h1>
 	<div class="row">
-		<div class="col-6 mb-3" v-for="page in pages">
+		<div class="col-lg-6 col-12 mb-3" v-for="page in pages">
 			<div class="card">
 				<img :src="'/images/' + page.image" alt="" class="card-img-top">
 				<div class="card-body">

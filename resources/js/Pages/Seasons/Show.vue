@@ -4,18 +4,18 @@
 	<Header :text="season.name"/>
 
 	<div v-if="active" class="mb-5">
-		<RoundCard :round="active" class="col-4"/>
+		<RoundCard :round="active" class="col-lg-4 col-md-6 col-12 mb-3"/>
 	</div>
 
 	<div v-if="pending.length" class="mb-5">
 		<div class="row">
-			<RoundCard :round="round" v-for="round in pending" :key="round.id" class="col-4"/>
+			<RoundCard :round="round" v-for="round in pending" :key="round.id" class="col-lg-4 col-md-6 col-12 mb-3"/>
 		</div>
 	</div>
 
 	<div v-if="completed.length" class="mb-5">
 		<div class="row">
-			<RoundCard :round="round" v-for="round in completed" :key="round.id" class="col-4"/>
+			<RoundCard :round="round" v-for="round in completed" :key="round.id" class="col-lg-4 col-md-6 col-12 mb03"/>
 		</div>
 	</div>
 </template>

@@ -9,7 +9,7 @@
 
 	<div v-if="rounds.length">
 		<div class="row">
-			<div class="col-4 mb-4" v-for="round in rounds" :key="round.id">
+			<div class="col-lg-4 col-md-6 col-12 mb-4" v-for="round in rounds" :key="round.id">
 				<div class="card">
 					<img src="#" alt="" class="card-img-top">
 					<div class="card-body">

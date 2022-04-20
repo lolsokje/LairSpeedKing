@@ -4,7 +4,7 @@
 	<Header :text="season.name"/>
 
 	<div class="row">
-		<div class="col-4 mb-3" v-for="(page, key) in pages" :key="key">
+		<div class="col-lg-4 col-md-6 col-12 mb-3" v-for="(page, key) in pages" :key="key">
 			<div class="card">
 				<div class="card-header">
 					<h2>{{ page.name }}</h2>

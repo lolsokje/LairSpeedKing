@@ -6,7 +6,7 @@
 	<InertiaLink :href="route('admin.seasons.create')" class="btn btn-primary mb-4">Add season</InertiaLink>
 
 	<div class="row" v-if="seasons.length">
-		<div class="col-4 mb-4" v-for="season in seasons" :key="season.id">
+		<div class="col-lg-4 col-md-6 col-12 mb-4" v-for="season in seasons" :key="season.id">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">{{ season.name }}</h5>

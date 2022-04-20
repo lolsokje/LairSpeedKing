@@ -16,21 +16,21 @@
 				</div>
 
 				<div class="row mb-3">
-					<div class="col-4">
+					<div class="col-lg-4 col-md-6 col-12">
 						<label for="car" class="form-label">Car</label>
 						<select id="car" class="form-select" v-model="form.car_id" required>
 							<option v-for="car in cars" :key="car.id" :value="car.id">{{ car.name }}</option>
 						</select>
 					</div>
 
-					<div class="col-4">
+					<div class="col-lg-4 col-md-6 col-12">
 						<label for="track" class="form-label">Track</label>
 						<select id="track" class="form-select" v-model="selectedTrackId">
 							<option v-for="track in tracks" :key="track.id" :value="track.id">{{ track.name }}</option>
 						</select>
 					</div>
 
-					<div class="col-4">
+					<div class="col-lg-4 col-md-6 col-12">
 						<label for="track_variation" class="form-label">Track variation</label>
 						<select id="track_variation" class="form-select" v-model="form.track_variation_id"
 								:disabled="selectedTrack === ''" required>
