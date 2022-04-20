@@ -13,9 +13,9 @@
 					</div>
 					<div class="mb-3">
 						<label for="time" class="form-label">Time</label>
-						<input type="text" id="time" class="form-control" v-model="form.lap_time" placeholder="h:mm.sss"
+						<input type="text" id="time" class="form-control" v-model="form.lap_time" placeholder="m:ss.xxx"
 							   required>
-						<p><small>Times must be submitted in the format "h:mm.sss"</small></p>
+						<p><small>Times must be submitted in the format "m:ss.xxx"</small></p>
 					</div>
 
 					<div class="mb-3">
