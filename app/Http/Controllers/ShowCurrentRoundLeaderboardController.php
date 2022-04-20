@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Round;
 use Illuminate\Http\RedirectResponse;
 
-class ShowCurrentLapTimeLeaderboardController extends Controller
+class ShowCurrentRoundLeaderboardController extends Controller
 {
     public function __invoke(): RedirectResponse
     {
