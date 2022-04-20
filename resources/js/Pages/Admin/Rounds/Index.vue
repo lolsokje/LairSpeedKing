@@ -15,9 +15,23 @@
 					<div class="card-body">
 						<h4 class="card-title">{{ round.name }}</h4>
 						<h6 class="card-subtitle text-muted mb-2">{{ round.date_range }}</h6>
-						<p class="card-text mb-0">Car: {{ round.car.name }}</p>
-						<p class="card-text mb-0">Track: {{ round.variation.track.name }}</p>
-						<p class="card-text">Variation: {{ round.variation.name }}</p>
+						<ul class="list-group list-unstyled">
+							<li>
+								<span class="fw-bolder">Car</span>
+								<p>{{ round.car.name }}</p>
+							</li>
+							<li>
+								<span class="fw-bolder">Track</span>
+								<p>{{ round.variation.track.name }}</p>
+							</li>
+							<li>
+								<span class="fw-bolder">Variation</span>
+								<p>{{ round.variation.name }}</p>
+							</li>
+						</ul>
+						<!--						<p class="card-text mb-0">Car: {{ round.car.name }}</p>-->
+						<!--						<p class="card-text mb-0">Track: {{ round.variation.track.name }}</p>-->
+						<!--						<p class="card-text">Variation: {{ round.variation.name }}</p>-->
 
 						<div class="d-flex">
 							<InertiaLink :href="route('admin.seasons.rounds.edit', [season, round])"
