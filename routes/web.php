@@ -25,10 +25,10 @@ Route::get('seasons/{season}', ShowSeasonController::class)->name('seasons.show'
 
 Route::get('leaderboard', ShowCurrentRoundLeaderboardController::class)->name('leaderboard');
 
+Route::get('times/{round}', ShowLapTimesController::class)->name('times.show');
 Route::middleware('verify_authenticated')->group(function () {
     Route::get('times', ShowSubmitTimePageController::class)->name('times.create');
     Route::post('times', SubmitLapTimeController::class)->name('times.store');
-    Route::get('times/{round}', ShowLapTimesController::class)->name('times.show');
 });
 
 Route::get('/auth/discord/redirect', [DiscordController::class, 'redirect'])->name('auth.discord.redirect');
