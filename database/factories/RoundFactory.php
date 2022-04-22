@@ -31,4 +31,17 @@ class RoundFactory extends Factory
             'ends_at' => $endsAt->format('Y-m-d'),
         ];
     }
+
+    public function active(): static
+    {
+        return $this->state(function (array $attributes) {
+            $startsAt = new DateTime();
+            $starts = $startsAt->format('Y-m-d');
+            $endsAt = $startsAt->modify('+1 week');
+            return [
+                'starts_at' => $starts,
+                'ends_at' => $endsAt->format('Y-m-d'),
+            ];
+        });
+    }
 }

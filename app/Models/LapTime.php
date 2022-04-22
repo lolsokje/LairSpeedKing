@@ -44,7 +44,7 @@ class LapTime extends Model
             $time = $this->lap_time;
             $minutes = (int) ($time / 60000) % 60;
             $seconds = str_pad((int) ($time / 1000) % 60, 2, '0', STR_PAD_LEFT);
-            $millis = str_pad($time % 1000, 3, '0');
+            $millis = str_pad($time % 1000, 3, '0', STR_PAD_LEFT);
 
             return "$minutes:$seconds.$millis";
         });

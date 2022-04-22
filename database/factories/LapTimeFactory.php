@@ -22,9 +22,18 @@ class LapTimeFactory extends Factory
         return [
             'user_id' => User::factory(),
             'round_id' => Round::factory(),
-            'lap_time' => $this->faker->numberBetween(60000, 180000),
+            'lap_time' => $this->faker->time('m:s.v'),
             'video_url' => $this->faker->url(),
             'status' => LapTimeStatus::SUBMITTED,
         ];
+    }
+
+    public function approved(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'status' => LapTimeStatus::APPROVED,
+            ];
+        });
     }
 }
