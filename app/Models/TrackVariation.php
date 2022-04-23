@@ -12,6 +12,11 @@ class TrackVariation extends Model
 {
     use HasFactory, Snowflake;
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public const DEFAULT_NAME = 'Base';
 
     public function track(): BelongsTo

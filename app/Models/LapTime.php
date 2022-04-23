@@ -15,7 +15,6 @@ class LapTime extends Model
     use HasFactory, Snowflake;
 
     protected $hidden = [
-        'created_at',
         'updated_at',
     ];
 

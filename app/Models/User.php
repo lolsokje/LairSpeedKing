@@ -19,6 +19,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'discord_id',
+        'created_at',
+        'updated_at',
     ];
 
     public function times(): HasMany

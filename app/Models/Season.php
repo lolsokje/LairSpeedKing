@@ -19,6 +19,11 @@ class Season extends Model
         'status',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function setStartAndEndDate()
     {
         $firstRound = $this->rounds()->orderBy('starts_at')->first();

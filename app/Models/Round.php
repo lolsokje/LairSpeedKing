@@ -21,6 +21,7 @@ class Round extends Model
     public const END_TIME = '17:59:45';
 
     protected $hidden = [
+        'closes_at',
         'created_at',
         'updated_at',
     ];

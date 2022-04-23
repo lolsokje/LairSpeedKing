@@ -21,6 +21,11 @@ class Car extends Model
         'content_type_name',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function rounds(): BelongsToMany
     {
         return $this->belongsToMany(Round::class);
