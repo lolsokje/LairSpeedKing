@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 class Round extends Model
 {
@@ -68,6 +69,11 @@ class Round extends Model
     public function times(): HasMany
     {
         return $this->hasMany(LapTime::class);
+    }
+
+    public function points(): Collection
+    {
+        return $this->season->points;
     }
 
     public function timesForLeaderboard(): array

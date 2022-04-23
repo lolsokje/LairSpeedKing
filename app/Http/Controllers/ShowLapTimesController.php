@@ -13,6 +13,7 @@ class ShowLapTimesController extends Controller
         return Inertia::render('Rounds/Times/Show', [
             'round' => $round,
             'times' => $round->timesForLeaderboard(),
+            'points' => $round->points(),
         ]);
     }
 }
