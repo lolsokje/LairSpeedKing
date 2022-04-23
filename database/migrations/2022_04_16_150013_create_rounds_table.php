@@ -18,8 +18,8 @@ return new class extends Migration {
             $table->foreignId('track_variation_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('car_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
-            $table->date('starts_at');
-            $table->date('ends_at');
+            $table->timestamp('starts_at');
+            $table->timestamp('ends_at');
             $table->timestamp('closed_at')->nullable(); // shouldn't be necessary but allows admins to manually close a round before the ends_at date
             $table->timestamps();
         });

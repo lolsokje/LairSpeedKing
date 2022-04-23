@@ -35,9 +35,8 @@ class RoundFactory extends Factory
     public function active(): static
     {
         return $this->state(function (array $attributes) {
-            $startsAt = new DateTime();
-            $starts = $startsAt->format('Y-m-d');
-            $endsAt = $startsAt->modify('+1 week');
+            $starts = (new DateTime())->modify('-1 day')->format('Y-m-d');
+            $endsAt = (new DateTime())->modify('+6 days');
             return [
                 'starts_at' => $starts,
                 'ends_at' => $endsAt->format('Y-m-d'),

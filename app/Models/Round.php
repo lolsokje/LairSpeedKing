@@ -7,6 +7,7 @@ use App\Traits\DateRangeAttribute;
 use App\Traits\Snowflake;
 use App\Traits\StatusAttribute;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Round extends Model
 {
     use HasFactory, Snowflake, DateRangeAttribute, StatusAttribute;
+
+    public const START_TIME = '18:00:00';
+    public const END_TIME = '17:59:45';
 
     protected $hidden = [
         'created_at',
@@ -26,13 +30,23 @@ class Round extends Model
         'date_range',
     ];
 
+    public function startsAt(): Attribute
+    {
+        return Attribute::set(fn($value) => $value.' '.self::START_TIME);
+    }
+
+    public function endsAt(): Attribute
+    {
+        return Attribute::set(fn($value) => $value.' '.self::END_TIME);
+    }
+
     public function scopeActive(Builder $query): void
     {
-        $today = date('Y-m-d');
+        $now = now()->format('Y-m-d H:i:s');
         $query
             ->orderBy('starts_at')
-            ->where('starts_at', '<=', $today)
-            ->where('ends_at', '>=', $today);
+            ->where('starts_at', '<=', $now)
+            ->where('ends_at', '>=', $now);
     }
 
     public function season(): BelongsTo

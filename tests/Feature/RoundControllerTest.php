@@ -12,8 +12,10 @@ use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 use function Pest\Laravel\put;
+use function Pest\Laravel\travelTo;
 use function PHPUnit\Framework\assertCount;
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertNull;
 
 test('an admin can view the rounds index page', function () {
@@ -134,8 +136,8 @@ it('updates the season start and end date when adding a round', function () {
         'ends_at' => $endsAt,
     ]));
 
-    assertEquals($startsAt, $season->fresh()->starts_at);
-    assertEquals($endsAt, $season->fresh()->ends_at);
+    assertEquals($startsAt.' '.Round::START_TIME, $season->fresh()->starts_at);
+    assertEquals($endsAt.' '.Round::END_TIME, $season->fresh()->ends_at);
 
     [$laterStartsAt, $laterEndsAt] = getStartsAndEndsAt('2022-01-08');
 
@@ -144,8 +146,8 @@ it('updates the season start and end date when adding a round', function () {
         'ends_at' => $laterEndsAt,
     ]));
 
-    assertEquals($startsAt, $season->fresh()->starts_at);
-    assertEquals($laterEndsAt, $season->fresh()->ends_at);
+    assertEquals($startsAt.' '.Round::START_TIME, $season->fresh()->starts_at);
+    assertEquals($laterEndsAt.' '.Round::END_TIME, $season->fresh()->ends_at);
 
     [$earlierStartsAt, $earlierEndsAt] = getStartsAndEndsAt('2021-12-24');
 
@@ -154,8 +156,8 @@ it('updates the season start and end date when adding a round', function () {
         'ends_at' => $earlierEndsAt,
     ]));
 
-    assertEquals($earlierStartsAt, $season->fresh()->starts_at);
-    assertEquals($laterEndsAt, $season->fresh()->ends_at);
+    assertEquals($earlierStartsAt.' '.Round::START_TIME, $season->fresh()->starts_at);
+    assertEquals($laterEndsAt.' '.Round::END_TIME, $season->fresh()->ends_at);
 });
 
 it('shows the right amount of rounds on the round index page', function () {
@@ -170,6 +172,43 @@ it('shows the right amount of rounds on the round index page', function () {
             ->component('Admin/Rounds/Index')
             ->has('rounds', 5)
         );
+});
+
+it('adds the correct start and end times to the start and end date', function () {
+    $startsAt = '2022-01-01';
+    $endsAt = '2022-01-08';
+    $round = Round::factory()->create(['starts_at' => $startsAt, 'ends_at' => $endsAt]);
+
+    assertEquals($startsAt.' '.Round::START_TIME, $round->starts_at);
+    assertEquals($endsAt.' '.Round::END_TIME, $round->ends_at);
+});
+
+test('a round opens at the correct time', function () {
+    [$startsAt, $endsAt] = getStartsAndEndsAt();
+    $round = Round::factory()->create(['starts_at' => $startsAt, 'ends_at' => $endsAt]);
+
+    $beforeStartsAt = (new DateTime($round->starts_at))->modify('-1 second');
+    $onStartsAt = (new DateTime($round->starts_at));
+
+    travelTo($beforeStartsAt);
+    assertNull(Round::active()->first());
+
+    travelTo($onStartsAt);
+    assertNotNull(Round::active()->first());
+});
+
+test('a round closes at the correct time', function () {
+    [$startsAt, $endsAt] = getStartsAndEndsAt();
+    $round = Round::factory()->create(['starts_at' => $startsAt, 'ends_at' => $endsAt]);
+
+    $onEndsAt = (new DateTime($round->ends_at));
+    $afterEndsAt = (new DateTime($round->ends_at))->modify('+1 second');
+
+    travelTo($onEndsAt);
+    assertNotNull(Round::active()->first());
+
+    travelTo($afterEndsAt);
+    assertNull(Round::active()->first());
 });
 
 function getRoundData(?array $override = []): array
@@ -187,7 +226,7 @@ function getRoundData(?array $override = []): array
 function getStartsAndEndsAt(?string $startDate = 'now'): array
 {
     $startsAt = new DateTime($startDate);
-    $endsAt = $startsAt->modify('+1 week');
+    $endsAt = (new DateTime($startDate))->modify('+1 week');
 
     return [
         $startsAt->format('Y-m-d'),
