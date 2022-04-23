@@ -33,5 +33,6 @@ const props = defineProps({
 
 const pages = [
 	{ name: 'Rounds', route: route('admin.seasons.rounds.index', [props.season]) },
+	{ name: 'Points', route: route('admin.seasons.points.index', [props.season]) },
 ];
 </script>

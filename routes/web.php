@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PointSystemController;
 use App\Http\Controllers\RoundController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\ShowCurrentRoundLeaderboardController;
@@ -48,6 +49,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin']
 
     Route::group(['prefix' => 'seasons/{season}', 'as' => 'seasons.'], function () {
         Route::resource('rounds', RoundController::class)->except('destroy');
+        Route::resource('points', PointSystemController::class)->only('index', 'create', 'store');
 
         Route::group(['prefix' => 'rounds/{round}', 'as' => 'rounds.'], function () {
             Route::get('times', ShowRoundLapTimesController::class)->name('times.index');

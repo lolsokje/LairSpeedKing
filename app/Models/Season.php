@@ -39,4 +39,9 @@ class Season extends Model
     {
         return $this->hasMany(Round::class);
     }
+
+    public function points(): HasMany
+    {
+        return $this->hasMany(PointSystem::class)->orderBy('position');
+    }
 }
