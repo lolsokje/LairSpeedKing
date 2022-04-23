@@ -17,6 +17,9 @@ class ShowRoundLapTimesController extends Controller
             'season' => $season,
             'round' => $round,
             'times' => $round->times()
+                ->when($request->has('only_pending') && $request->get('only_pending') === 'true', function ($query) {
+                    $query->pending();
+                })
                 ->orderBy('lap_time')
                 ->with('user')
                 ->get(),

@@ -3,7 +3,10 @@
 
 	<Header :text="'Times for ' + round.name"/>
 
-	<label for="only_pending" class="form-label">Show only pending laptimes</label>
+	<div v-if="!route().current().includes('pending')">
+		<input type="checkbox" class="form-check-inline" v-model="onlyPending" id="only_pending">
+		<label for="only_pending" class="form-label">Show only pending laptimes</label>
+	</div>
 
 	<div class="row bg-black rounded-3 py-3 fw-bold align-items-center">
 		<div class="col-1 text-center">#</div>
@@ -43,6 +46,7 @@ import BackToOverviewButton from '@/Shared/BackToOverviewButton';
 import Header from '@/Shared/Header';
 import { Inertia } from '@inertiajs/inertia';
 import LapTimeStatus from '@/LapTimeStatus';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
 	season: {
@@ -58,6 +62,9 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const pendingParam = (new URLSearchParams(window.location.search)).get('pending_only');
+const onlyPending = ref(pendingParam);
 
 const approve = (time) => {
 	handleStatusChange('admin.seasons.rounds.times.approve', time);
@@ -89,4 +96,13 @@ const statusColourClass = (status) => {
 		return 'bg-danger';
 	}
 };
+
+watch(onlyPending, (checked) => {
+	Inertia.get(route('admin.seasons.rounds.times.index', [props.season, props.round]), {
+		only_pending: checked,
+	}, {
+		preserveState: true,
+		only: ['times'],
+	});
+});
 </script>
