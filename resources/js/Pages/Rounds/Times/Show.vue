@@ -1,31 +1,37 @@
 <template>
 	<Header :text="'Lap times for \'' + round.name + '\''"/>
 
-	<div class="row bg-black py-3 rounded-3 fw-bold">
-		<div class="col-1 text-center">POS</div>
-		<div class="col-1"></div>
-		<div class="col-5">USER</div>
-		<div class="col-1 text-center">TIME</div>
-		<div class="col-1 text-center">GAP</div>
-		<div class="col-1 text-center">INTERVAL</div>
-		<div class="col-1 text-center">VIDEO</div>
-		<div class="col-1 text-center">POINTS</div>
-	</div>
-	<div class="row py-3 my-3 rounded-3 align-items-center bg-accent" v-for="(time, index) in times" :key="index">
-		<div class="col-1 text-center">{{ index + 1 }}</div>
-		<div class="col-1">
-			<img :src="time.user.avatar" height="50" width="50" alt="" class="rounded-circle"
-				 v-if="time.user.avatar">
-		</div>
-		<div class="col-5">{{ time.user.username }}</div>
-		<div class="col-1 text-center">{{ time.readable_lap_time }}</div>
-		<div class="col-1 text-center">{{ calculateGap(time.lap_time) }}</div>
-		<div class="col-1 text-center">{{ calculateGap(time.lap_time) }}</div>
-		<div class="col-1 text-center">
-			<a :href="time.video_url" class="text-secondary">view</a>
-		</div>
-		<div class="col-1 text-center">{{ getPoints(index + 1) }}</div>
-	</div>
+	<table class="table table-borderless table-responsive custom-table">
+		<thead>
+		<tr>
+			<th class="text-center">POS</th>
+			<th></th>
+			<th>USER</th>
+			<th class="text-center">TIME</th>
+			<th class="text-center">GAP</th>
+			<th class="text-center">INTERVAL</th>
+			<th class="text-center">VIDEO</th>
+			<th class="text-center">POINTS</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr v-for="(time, index) in times" :key="index" class="align-middle">
+			<td class="text-center">{{ index + 1 }}</td>
+			<td>
+				<img :src="time.user.avatar" height="50" width="50" alt="" class="rounded-circle img-fluid"
+					 v-if="time.user.avatar">
+			</td>
+			<td>{{ time.user.username }}</td>
+			<td class="text-center">{{ time.readable_lap_time }}</td>
+			<td class="text-center">{{ calculateGap(time.lap_time) }}</td>
+			<td class="text-center">{{ calculateInterval(index) }}</td>
+			<td class="text-center">
+				<a :href="time.video_url" class="text-secondary" target="_blank">view</a>
+			</td>
+			<td class="text-center">{{ getPoints(index + 1) }}</td>
+		</tr>
+		</tbody>
+	</table>
 </template>
 
 <script setup>

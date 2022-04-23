@@ -8,37 +8,41 @@
 		<label for="only_pending" class="form-label">Show only pending laptimes</label>
 	</div>
 
-	<div class="row bg-black rounded-3 py-3 fw-bold align-items-center">
-		<div class="col-1 text-center">#</div>
-		<div class="col-1"></div>
-		<div class="col-3">User</div>
-		<div class="col-1 text-center">Time</div>
-		<div class="col-1 text-center">Video</div>
-		<div class="col-1 text-center">Status</div>
-		<div class="offset-1 col-2 text-center"></div>
-	</div>
-	<div class="row bg-accent rounded-3 my-3 py-3 align-items-center" v-for="(time, key) in times" :key="key">
-		<div class="col-1 text-center">{{ key + 1 }}</div>
-		<div class="col-1">
-			<img :src="time.user.avatar" alt="" height="50" width="50" class="rounded-circle">
-		</div>
-		<div class="col-3">{{ time.user.username }}</div>
-		<div class="col-1 text-center">{{ time.readable_lap_time }}</div>
-		<div class="col-1 text-center">
-			<a :href="time.video_url" class="text-secondary" target="_blank">view</a>
-		</div>
-		<div class="col-1 text-center badge py-2" :class="statusColourClass(time.status)">{{ time.status_text }}</div>
-		<div class="offset-1 col-2 text-center">
-			<div class="d-flex">
-				<button class="btn btn-success me-auto" @click="approve(time)" v-if="canBeApproved(time)">
-					approve
-				</button>
-				<button v-if="canBeDenied(time)" class="btn btn-danger ms-auto" @click="deny(time)">
-					deny
-				</button>
-			</div>
-		</div>
-	</div>
+	<table class="table table-borderless table-responsive custom-table">
+		<thead>
+		<tr>
+			<th class="text-center">#</th>
+			<th></th>
+			<th>User</th>
+			<th class="text-center">Time</th>
+			<th class="text-center">Video</th>
+			<th class="text-center">Status</th>
+			<th class="text-center"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr v-for="(time, key) in times" :key="key" class="align-middle">
+			<td class="text-center">{{ key + 1 }}</td>
+			<td><img :src="time.user.avatar" alt="" height="50" width="50" class="rounded-circle"></td>
+			<td>{{ time.user.username }}</td>
+			<td class="text-center">{{ time.readable_lap_time }}</td>
+			<td class="text-center"><a :href="time.video_url" class="text-secondary" target="_blank">view</a></td>
+			<td class="text-center">
+				<span class="badge py-2" :class="statusColourClass(time.status)">{{ time.status_text }}</span>
+			</td>
+			<td class="text-center">
+				<div class="d-flex">
+					<button class="btn btn-success me-auto" v-if="canBeApproved(time)" @click="approve(time)">
+						approve
+					</button>
+					<button class="btn btn-danger ms-auto" v-if="canBeDenied(time)" @click="deny(time)">
+						deny
+					</button>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
 </template>
 
 <script setup>
