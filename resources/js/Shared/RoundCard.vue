@@ -59,9 +59,14 @@ const props = defineProps({
 		type: Object,
 		required: true,
 	},
+	user: {
+		type: Object,
+		required: false,
+		default: null,
+	},
 });
 
-const canSubmit = props.round.status === 'Active';
+const canSubmit = props.user && props.round.status === 'Active';
 const footerClass = `status-${props.round.status.toLowerCase()}`;
 const hasResults = props.round.status === 'Active' | props.round.status === 'Completed';
 

@@ -4,7 +4,7 @@
 	<Header :text="season.name"/>
 
 	<div v-if="active" class="mb-5">
-		<RoundCard :round="active" class="col-lg-4 col-md-6 col-12 mb-3"/>
+		<RoundCard :round="active" class="col-lg-4 col-md-6 col-12 mb-3" :user="user"/>
 	</div>
 
 	<div v-if="pending.length" class="mb-5">
@@ -24,6 +24,8 @@
 import RoundCard from '@/Shared/RoundCard';
 import Header from '@/Shared/Header';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import { computed } from 'vue';
+import { usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
 	season: {
@@ -43,4 +45,6 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const user = computed(() => usePage().props.value.auth.user);
 </script>
