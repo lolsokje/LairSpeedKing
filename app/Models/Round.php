@@ -18,8 +18,8 @@ class Round extends Model
 {
     use HasFactory, Snowflake, DateRangeAttribute, StatusAttribute;
 
-    public const START_TIME = '18:00:00';
-    public const END_TIME = '17:59:45';
+    public const START_TIME = '16:00:00';
+    public const END_TIME = '15:59:45';
 
     protected $hidden = [
         'closes_at',

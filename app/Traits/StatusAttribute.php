@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use DateTime;
-use DateTimeZone;
 use Illuminate\Database\Eloquent\Builder;
 
 trait StatusAttribute
@@ -12,7 +10,7 @@ trait StatusAttribute
     {
         $start = $this->starts_at;
         $end = $this->ends_at;
-        $today = (new DateTime('now', new DateTimeZone('Europe/Amsterdam')))->format('Y-m-d H:i:s');
+        $today = date('Y-m-d H:i:s');
 
         if (!$start || !$end) {
             return 'Unknown';
