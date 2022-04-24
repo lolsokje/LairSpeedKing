@@ -9,7 +9,8 @@
 				<InertiaLink :href="route('seasons.show', [season])" class="btn btn-primary">
 					Rounds
 				</InertiaLink>
-				<InertiaLink href="#" class="btn btn-outline-secondary ms-auto" v-if="hasStandings">
+				<InertiaLink :href="route('seasons.standings', [season])" class="btn btn-outline-secondary ms-auto"
+							 v-if="hasStandings">
 					Standings
 				</InertiaLink>
 			</div>
@@ -29,7 +30,7 @@ const props = defineProps({
 });
 
 const footerClass = `status-${props.season.status.toLowerCase()}`;
-const hasStandings = props.season.status === 'Active' || props.season.status === 'Completed';
+const hasStandings = props.season.times_count > 0;
 </script>
 
 <script>

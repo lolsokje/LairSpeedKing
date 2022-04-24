@@ -15,6 +15,7 @@ use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\ShowCurrentRoundLeaderboardController;
 use App\Http\Controllers\ShowLapTimesController;
 use App\Http\Controllers\ShowSeasonController;
+use App\Http\Controllers\ShowStandingsController;
 use App\Http\Controllers\ShowSubmitTimePageController;
 use App\Http\Controllers\SubmitLapTimeController;
 use App\Http\Controllers\TrackController;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('', IndexController::class)->name('index');
 Route::get('seasons/{season}', ShowSeasonController::class)->name('seasons.show');
+Route::get('seasons/{season}/standings', ShowStandingsController::class)->name('seasons.standings');
 
 Route::get('leaderboard', ShowCurrentRoundLeaderboardController::class)->name('leaderboard');
 

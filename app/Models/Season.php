@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Season extends Model
 {
@@ -43,5 +44,10 @@ class Season extends Model
     public function points(): HasMany
     {
         return $this->hasMany(PointSystem::class)->orderBy('position');
+    }
+
+    public function times(): HasManyThrough
+    {
+        return $this->hasManyThrough(LapTime::class, Round::class);
     }
 }

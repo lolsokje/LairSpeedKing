@@ -10,9 +10,9 @@ class IndexController extends Controller
     public function __invoke()
     {
         return Inertia::render('Index', [
-            'active' => Season::active()->withCount('rounds')->first(),
-            'pending' => Season::pending()->withCount('rounds')->get(),
-            'completed' => Season::completed()->withCount('rounds')->get(),
+            'active' => Season::active()->withCount('rounds', 'times')->first(),
+            'pending' => Season::pending()->withCount('rounds', 'times')->get(),
+            'completed' => Season::completed()->withCount('rounds', 'times')->get(),
         ]);
     }
 }
