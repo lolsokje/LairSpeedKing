@@ -25,17 +25,17 @@ trait StatusAttribute
 
     public function scopePending(Builder $query): void
     {
-        $query->orderBy('starts_at')->where('starts_at', '>', date('Y-m-d'))->orWhere('starts_at', null);
+        $query->orderBy('starts_at')->where('starts_at', '>', date('Y-m-d H:i:s'))->orWhere('starts_at', null);
     }
 
     public function scopeActive(Builder $query): void
     {
-        $today = date('Y-m-d');
+        $today = date('Y-m-d H:i:s');
         $query->orderBy('starts_at')->where('starts_at', '<=', $today)->where('ends_at', '>=', $today);
     }
 
     public function scopeCompleted(Builder $query): void
     {
-        $query->orderBy('starts_at')->where('ends_at', '<', date('Y-m-d'));
+        $query->orderBy('starts_at')->where('ends_at', '<', date('Y-m-d H:i:s'));
     }
 }
