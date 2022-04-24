@@ -22,11 +22,13 @@ class RoundFactory extends Factory
     {
         $startsAt = new DateTime;
         $endsAt = $startsAt->modify('+1 week');
+        $text = $this->faker->text(5);
         return [
             'season_id' => Season::factory(),
             'track_variation_id' => TrackVariation::factory(),
             'car_id' => Car::factory(),
             'name' => $this->faker->name(),
+            'tla' => substr($text, 0, 3),
             'starts_at' => $startsAt->format('Y-m-d'),
             'ends_at' => $endsAt->format('Y-m-d'),
         ];

@@ -10,7 +10,7 @@
 			<th>Driver</th>
 			<th class="text-center" v-for="(round, index) in season.rounds" :key="round.id">
 				<InertiaLink :href="route('times.show', [round])" class="text-secondary">
-					{{ index + 1 }}
+					{{ getColumnHeader(round, index) }}
 				</InertiaLink>
 			</th>
 			<th class="text-center">Total</th>
@@ -49,6 +49,10 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const getColumnHeader = (round, index) => {
+	return round.tla === '' ? index + 1 : round.tla;
+};
 
 const getGap = (total) => {
 	const leaderTotal = props.standings[0].total;

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Season;
 use App\Services\SeasonStandingsService;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ShowStandingsController extends Controller

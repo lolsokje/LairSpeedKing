@@ -10,9 +10,18 @@
 					<p class="text-danger" v-for="error in form.errors">{{ error }}</p>
 				</div>
 
-				<div class="mb-3">
-					<label for="name" class="form-label">Name</label>
-					<input type="text" class="form-control" v-model="form.name" id="name" required>
+				<div class="row mb-3">
+					<div class="col-10">
+						<label for="name" class="form-label">Name</label>
+						<input type="text" class="form-control" v-model="form.name" id="name" required>
+					</div>
+					<div class="col-2">
+						<label for="tla" class="form-label">TLA</label>
+						<input type="text" class="form-control" v-model="form.tla" id="tla" maxlength="3" required>
+					</div>
+					<small class="text-end">
+						The TLA will be shown on the season standings page, so make sure it's unique within the season
+					</small>
 				</div>
 
 				<div class="row mb-3">
@@ -93,6 +102,7 @@ const variations = ref([]);
 
 const form = useForm({
 	name: props.round.name,
+	tla: props.round.tla,
 	car_id: props.round.car_id,
 	track_variation_id: props.round.track_variation_id,
 	starts_at: props.round.starts_at,
@@ -101,6 +111,7 @@ const form = useForm({
 
 const formValid = computed(() => {
 	return form.name.length >= 3
+		&& form.tla.length === 3
 		&& form.car_id !== ''
 		&& form.track_variation_id !== ''
 		&& form.starts_at !== ''

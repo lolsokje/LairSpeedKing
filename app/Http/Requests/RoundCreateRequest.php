@@ -25,6 +25,7 @@ class RoundCreateRequest extends FormRequest
     {
         return [
             'name' => ['required'],
+            'tla' => ['required', 'string', 'max:3'],
             'track_variation_id' => ['required', 'exists:track_variations,id'],
             'car_id' => ['required', 'exists:cars,id'],
             'starts_at' => ['required', 'date'],

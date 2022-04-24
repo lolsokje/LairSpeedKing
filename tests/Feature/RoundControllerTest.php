@@ -218,6 +218,7 @@ function getRoundData(?array $override = []): array
         'track_variation_id' => TrackVariation::factory()->create()->id,
         'car_id' => Car::factory()->create()->id,
         'name' => 'Test',
+        'tla' => 'TST',
         'starts_at' => $startsAt,
         'ends_at' => $endsAt,
     ], $override);
