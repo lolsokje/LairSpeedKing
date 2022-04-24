@@ -131,5 +131,15 @@ watch(selectedTrackId, (trackId) => {
 
 onMounted(() => {
 	variations.value = props.tracks.find((track) => track.id === selectedTrackId.value).variations;
+
+	form.starts_at = formatDate(form.starts_at);
+	form.ends_at = formatDate(form.ends_at);
 });
+
+const formatDate = (dateTime) => {
+	const date = new Date(dateTime);
+
+	// TODO figure out if there's a better way of formatting the date rather than using a French-Canadian format
+	return new Intl.DateTimeFormat('fr-CA').format(date);
+};
 </script>
