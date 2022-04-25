@@ -83,7 +83,7 @@ const parseLaptimes = (lapTime, compareLapTime) => {
 	const difference = Math.abs(lapTime - compareLapTime);
 	const minutes = parseInt((difference / 60000) % 60);
 	const seconds = `${parseInt((difference / 1000) % 60)}`.padStart(2, '0');
-	const millis = `${difference % 1000}`.padEnd(3, '0');
+	const millis = `${difference % 1000}`.padStart(3, '0');
 
 	return `+${minutes}:${seconds}.${millis}`;
 };
