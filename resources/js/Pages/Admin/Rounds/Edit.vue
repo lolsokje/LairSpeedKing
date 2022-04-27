@@ -112,7 +112,7 @@ const form = useForm({
 	track_variation_id: props.round.track_variation_id,
 	starts_at: props.round.starts_at,
 	ends_at: props.round.ends_at,
-	notes: props.round.notes.replace('<br />', ''),
+	notes: props.round.notes ? props.round.notes.replace('<br />', '') : '',
 });
 
 const formValid = computed(() => {
