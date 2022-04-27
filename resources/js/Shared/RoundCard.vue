@@ -4,7 +4,12 @@
 			<img src="#" alt="" class="card-img-top">
 			<div class="card-body">
 				<h4 class="card-title">{{ round.name }}</h4>
-				<h6 class="card-subtitle text-muted mb-2">{{ round.date_range }}</h6>
+				<h6 class="card-subtitle text-muted mb-2">
+					{{ round.date_range }} -
+					<InertiaLink class="text-secondary" :href="route('rounds.notes', [round])" v-if="round.notes">
+						view notes
+					</InertiaLink>
+				</h6>
 				<ul class="list-group list-unstyled">
 					<li class="" v-if="round.status !== 'Pending'">
 						<span class="fw-bolder">Car</span>

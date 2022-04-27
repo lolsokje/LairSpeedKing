@@ -30,6 +30,7 @@ class RoundCreateRequest extends FormRequest
             'car_id' => ['required', 'exists:cars,id'],
             'starts_at' => ['required', 'date'],
             'ends_at' => ['required', 'date'],
+            'notes' => ['nullable', 'string'],
         ];
     }
 }

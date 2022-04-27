@@ -65,6 +65,11 @@
 					</div>
 				</div>
 
+				<div class="mb-3">
+					<label for="notes" class="form-label">Round notes</label>
+					<textarea v-model="form.notes" id="notes" class="form-control" rows="6"></textarea>
+				</div>
+
 				<button type="submit" class="btn btn-primary" v-if="formValid">Save</button>
 			</form>
 		</div>
@@ -107,6 +112,7 @@ const form = useForm({
 	track_variation_id: props.round.track_variation_id,
 	starts_at: props.round.starts_at,
 	ends_at: props.round.ends_at,
+	notes: props.round.notes.replace('<br />', ''),
 });
 
 const formValid = computed(() => {

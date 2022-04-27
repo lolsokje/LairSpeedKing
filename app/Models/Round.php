@@ -42,6 +42,11 @@ class Round extends Model
         return Attribute::set(fn($value) => $value.' '.self::END_TIME);
     }
 
+    public function notes(): Attribute
+    {
+        return Attribute::set(fn($value) => nl2br($value));
+    }
+
     public function scopeActive(Builder $query): void
     {
         $now = now()->format('Y-m-d H:i:s');
