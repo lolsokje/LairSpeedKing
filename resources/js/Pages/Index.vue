@@ -18,6 +18,11 @@
 
 	<div v-if="completed.length">
 		<Header text="Past seasons"/>
+
+		<div class="row">
+			<SeasonCard :season="season" v-for="season in completed" :key="season.id"
+						class="col-lg-4 col-md-6 col-12"></SeasonCard>
+		</div>
 	</div>
 </template>
 
@@ -28,7 +33,7 @@ import Header from '@/Shared/Header';
 const props = defineProps({
 	active: {
 		type: Object,
-		required: true,
+		required: false,
 	},
 	pending: {
 		type: Array,
