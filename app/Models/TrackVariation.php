@@ -17,6 +17,11 @@ class TrackVariation extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'id' => 'string',
+        'track_id' => 'string',
+    ];
+
     public const DEFAULT_NAME = 'Base';
 
     public function track(): BelongsTo

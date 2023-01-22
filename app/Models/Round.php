@@ -32,6 +32,13 @@ class Round extends Model
         'date_range',
     ];
 
+    protected $casts = [
+        'id' => 'string',
+        'season_id' => 'string',
+        'track_variation_id' => 'string',
+        'car_id' => 'string',
+    ];
+
     public function startsAt(): Attribute
     {
         return Attribute::set(fn($value) => $value.' '.self::START_TIME);

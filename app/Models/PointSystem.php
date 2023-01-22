@@ -16,6 +16,11 @@ class PointSystem extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'id' => 'string',
+        'season_id' => 'string',
+    ];
+
     public function season(): BelongsTo
     {
         return $this->belongsTo(Season::class);

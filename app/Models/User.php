@@ -12,15 +12,15 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, Snowflake;
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'discord_id',
         'created_at',
         'updated_at',
+    ];
+
+    protected $casts = [
+        'id' => 'string',
+        'discord_id' => 'string',
     ];
 
     public function times(): HasMany

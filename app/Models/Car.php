@@ -14,6 +14,7 @@ class Car extends Model
     use HasFactory, Snowflake, ContentTypes;
 
     protected $casts = [
+        'id' => 'string',
         'content_type' => ContentType::class,
     ];
 

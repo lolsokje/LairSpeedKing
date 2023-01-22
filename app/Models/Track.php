@@ -14,6 +14,7 @@ class Track extends Model
     use HasFactory, Snowflake, ContentTypes;
 
     protected $casts = [
+        'id' => 'string',
         'content_type' => ContentType::class,
     ];
 
@@ -21,7 +22,7 @@ class Track extends Model
         'created_at',
         'updated_at',
     ];
-    
+
     protected $appends = [
         'content_type_name',
     ];

@@ -25,6 +25,10 @@ class Season extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'id' => 'string',
+    ];
+
     public function setStartAndEndDate()
     {
         $firstRound = $this->rounds()->orderBy('starts_at')->first();
