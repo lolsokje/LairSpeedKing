@@ -41,17 +41,12 @@ class Round extends Model
 
     public function startsAt(): Attribute
     {
-        return Attribute::set(fn($value) => $value.' '.self::START_TIME);
+        return Attribute::set(fn ($value) => $value . ' ' . self::START_TIME);
     }
 
     public function endsAt(): Attribute
     {
-        return Attribute::set(fn($value) => $value.' '.self::END_TIME);
-    }
-
-    public function notes(): Attribute
-    {
-        return Attribute::set(fn($value) => nl2br($value));
+        return Attribute::set(fn ($value) => $value . ' ' . self::END_TIME);
     }
 
     public function scopeActive(Builder $query): void
@@ -91,10 +86,10 @@ class Round extends Model
     public function timesForLeaderboard(): array
     {
         $times = $this->times()
-            ->with('user')
-            ->orderBy('lap_time')
-            ->where('status', LapTimeStatus::APPROVED)
-            ->get();
+                      ->with('user')
+                      ->orderBy('lap_time')
+                      ->where('status', LapTimeStatus::APPROVED)
+                      ->get();
 
         return $times->unique('user_id')->values()->toArray();
     }

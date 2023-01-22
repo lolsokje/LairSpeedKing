@@ -8,12 +8,10 @@
 	<div v-if="pending.length">
 		<Header text="Upcoming seasons"/>
 
-		<div class="container">
-			<div class="row">
-				<SeasonCard :season="season" v-for="season in pending" :key="season.id"
-							class="col-lg-4 col-md-6 col-12"/>
-			</div>
-		</div>
+        <div class="row">
+            <SeasonCard :season="season" v-for="season in pending" :key="season.id"
+                        class="col-lg-4 col-md-6 col-12"/>
+        </div>
 	</div>
 
 	<div v-if="completed.length">
