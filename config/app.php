@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use SocialiteProviders\Manager\ServiceProvider;
 
 return [
 
@@ -69,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Amsterdam',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,7 +168,7 @@ return [
         /*
          * Package Service Providers...
          */
-        \SocialiteProviders\Manager\ServiceProvider::class,
+        ServiceProvider::class,
 
         /*
          * Application Service Providers...
