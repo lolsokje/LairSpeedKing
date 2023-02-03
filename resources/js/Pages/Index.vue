@@ -29,8 +29,8 @@
 </template>
 
 <script setup>
-import SeasonCard from '@/Shared/SeasonCard';
-import Header from '@/Shared/Header';
+import SeasonCard from '@/Shared/SeasonCard.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
     active: {

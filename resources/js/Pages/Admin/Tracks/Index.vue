@@ -11,9 +11,9 @@
 </template>
 
 <script setup>
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import ContentIndex from '@/Shared/Content/Index';
-import Header from '@/Shared/Header';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
+import ContentIndex from '@/Shared/Content/Index.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
 	tracks: {

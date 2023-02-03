@@ -79,8 +79,8 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed, onMounted, ref, watch } from 'vue';
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import Header from '@/Shared/Header';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
     season: {
