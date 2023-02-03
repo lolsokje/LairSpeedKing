@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-import ContentEdit from '@/Shared/Content/Edit';
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import Header from '@/Shared/Header';
+import ContentEdit from '@/Shared/Content/Edit.vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
 	car: {

@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-import ContentCreate from '@/Shared/Content/Create';
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import Header from '@/Shared/Header';
+import ContentCreate from '@/Shared/Content/Create.vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
 	content_types: {

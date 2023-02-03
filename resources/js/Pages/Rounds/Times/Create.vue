@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import Header from '@/Shared/Header';
+import Header from '@/Shared/Header.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
 

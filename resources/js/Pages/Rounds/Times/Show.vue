@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import Header from '@/Shared/Header';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
 	round: {

@@ -7,8 +7,8 @@
 </template>
 
 <script setup>
-import ContentCreate from '@/Shared/Content/Create';
-import Header from '@/Shared/Header';
+import ContentCreate from '@/Shared/Content/Create.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
 	content_types: {

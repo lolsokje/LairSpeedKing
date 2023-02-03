@@ -21,9 +21,9 @@
 </template>
 
 <script setup>
-import RoundCard from '@/Shared/RoundCard';
-import Header from '@/Shared/Header';
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import RoundCard from '@/Shared/RoundCard.vue';
+import Header from '@/Shared/Header.vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
 
