@@ -11,9 +11,9 @@
 </template>
 
 <script setup>
-import ContentIndex from '@/Shared/Content/Index';
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
-import Header from '@/Shared/Header';
+import ContentIndex from '@/Shared/Content/Index.vue';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
+import Header from '@/Shared/Header.vue';
 
 const props = defineProps({
 	cars: {

@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import BackToOverviewButton from '@/Shared/BackToOverviewButton';
+import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
 
 const props = defineProps({
 	track: {
