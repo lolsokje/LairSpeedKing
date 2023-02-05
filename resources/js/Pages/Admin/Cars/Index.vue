@@ -1,24 +1,23 @@
 <template>
-	<BackToOverviewButton :link="route('admin.index')"/>
+    <BackToOverviewButton :link="route('admin.index')"/>
 
-	<Header text="Manage cars"/>
+    <Header text="Manage cars"/>
 
-	<InertiaLink :href="route('admin.cars.create')" class="btn btn-primary ms-auto mb-4">
-		Add car
-	</InertiaLink>
+    <ButtonLink :href="route('admin.cars.create')" label="Add car"/>
 
-	<ContentIndex type="cars" :content="cars"/>
+    <ContentIndex type="cars" :content="cars"/>
 </template>
 
 <script setup>
 import ContentIndex from '@/Shared/Content/Index.vue';
 import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
 import Header from '@/Shared/Header.vue';
+import ButtonLink from '@/Components/ButtonLink.vue';
 
 const props = defineProps({
-	cars: {
-		type: Array,
-		required: true,
-	},
+    cars: {
+        type: Array,
+        required: true,
+    },
 });
 </script>

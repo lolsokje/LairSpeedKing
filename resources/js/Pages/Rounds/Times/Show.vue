@@ -1,90 +1,99 @@
 <template>
-	<Header :text="'Lap times for \'' + round.name + '\''"/>
+    <Header :text="'Lap times for \'' + round.name + '\''"/>
 
-	<table class="table table-borderless table-responsive custom-table">
-		<thead>
-		<tr>
-			<th class="text-center">POS</th>
-			<th></th>
-			<th>USER</th>
-			<th class="text-center">TIME</th>
-			<th class="text-center">GAP</th>
-			<th class="text-center">INTERVAL</th>
-			<th class="text-center">VIDEO</th>
-			<th class="text-center">POINTS</th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr v-for="(time, index) in times" :key="index" class="align-middle">
-			<td class="text-center">{{ index + 1 }}</td>
-			<td>
-				<img :src="time.user.avatar" height="50" width="50" alt="" class="rounded-circle img-fluid"
-					 v-if="time.user.avatar">
-			</td>
-			<td>{{ time.user.username }}</td>
-			<td class="text-center">{{ time.readable_lap_time }}</td>
-			<td class="text-center">{{ calculateGap(time.lap_time) }}</td>
-			<td class="text-center">{{ calculateInterval(index) }}</td>
-			<td class="text-center">
-				<a :href="time.video_url" class="text-secondary" target="_blank">view</a>
-			</td>
-			<td class="text-center">{{ getPoints(index + 1) }}</td>
-		</tr>
-		</tbody>
-	</table>
+    <CustomTable>
+        <TableHead>
+            <tr>
+                <TableHeader>POS</TableHeader>
+                <TableHeader/>
+                <TableHeader left>USER</TableHeader>
+                <TableHeader>TIME</TableHeader>
+                <TableHeader>GAP</TableHeader>
+                <TableHeader>INTERVAL</TableHeader>
+                <TableHeader>VIDEO</TableHeader>
+                <TableHeader>POINTS</TableHeader>
+            </tr>
+        </TableHead>
+        <TableBody>
+            <tr v-for="(time, index) in times" :key="index">
+                <TableCell center>{{ index + 1 }}</TableCell>
+                <TableCell unpadded>
+                    <img :src="time.user.avatar" height="50" width="50" alt="" class="rounded-full"
+                         v-if="time.user.avatar"
+                    >
+                </TableCell>
+                <TableCell>{{ time.user.username }}</TableCell>
+                <TableCell center>{{ time.readable_lap_time }}</TableCell>
+                <TableCell center>{{ calculateGap(time.lap_time) }}</TableCell>
+                <TableCell center>{{ calculateInterval(index) }}</TableCell>
+                <TableCell center>
+                    <a :href="time.video_url"
+                       class="text-secondary hover:text-secondary-hover active:text-secondary-active"
+                       target="_blank"
+                    >view</a>
+                </TableCell>
+                <TableCell center>{{ getPoints(index + 1) }}</TableCell>
+            </tr>
+        </TableBody>
+    </CustomTable>
 </template>
 
 <script setup>
 import Header from '@/Shared/Header.vue';
+import CustomTable from '@/Components/CustomTable.vue';
+import TableHead from '@/Components/TableHead.vue';
+import TableHeader from '@/Components/TableHeader.vue';
+import TableBody from '@/Components/TableBody.vue';
+import TableCell from '@/Components/TableCell.vue';
 
 const props = defineProps({
-	round: {
-		type: Object,
-		required: true,
-	},
-	times: {
-		type: Array,
-		required: true,
-	},
-	points: {
-		type: Array,
-		required: true,
-	},
+    round: {
+        type: Object,
+        required: true,
+    },
+    times: {
+        type: Array,
+        required: true,
+    },
+    points: {
+        type: Array,
+        required: true,
+    },
 });
 
 const calculateGap = (lapTime) => {
-	const times = props.times;
-	const lapTimeToCompareTo = times[0].lap_time;
+    const times = props.times;
+    const lapTimeToCompareTo = times[0].lap_time;
 
-	if (lapTime === lapTimeToCompareTo) {
-		return '-';
-	} else {
-		return parseLaptimes(lapTime, lapTimeToCompareTo);
-	}
+    if (lapTime === lapTimeToCompareTo) {
+        return '-';
+    } else {
+        return parseLaptimes(lapTime, lapTimeToCompareTo);
+    }
 };
 
 const calculateInterval = (index) => {
-	if (index === 0) {
-		return '-';
-	}
-	const times = props.times;
-	const currentLaptime = times[index].lap_time;
-	const previousLaptime = times[index - 1].lap_time;
+    if (index === 0) {
+        return '-';
+    }
+    const times = props.times;
+    const currentLaptime = times[index].lap_time;
+    const previousLaptime = times[index - 1].lap_time;
 
-	return parseLaptimes(currentLaptime, previousLaptime);
+    return parseLaptimes(currentLaptime, previousLaptime);
 };
 
 const getPoints = (position) => {
-	const result = props.points.find((p) => p.position === position);
-	return result ? result.points : 0;
+    const result = props.points.find((p) => p.position === position);
+    return result ? result.points : 0;
 };
 
 const parseLaptimes = (lapTime, compareLapTime) => {
-	const difference = Math.abs(lapTime - compareLapTime);
-	const minutes = parseInt((difference / 60000) % 60);
-	const seconds = `${parseInt((difference / 1000) % 60)}`.padStart(2, '0');
-	const millis = `${difference % 1000}`.padStart(3, '0');
+    const difference = Math.abs(lapTime - compareLapTime);
+    const minutes = parseInt((difference / 60000) % 60);
+    const seconds = `${parseInt((difference / 1000) % 60)}`.padStart(2, '0');
+    const millis = `${difference % 1000}`.padStart(3, '0');
 
-	return `+${minutes}:${seconds}.${millis}`;
+    return `+${minutes}:${seconds}.${millis}`;
 };
 </script>

@@ -1,29 +1,21 @@
 <template>
-	<nav class="navbar navbar-expand-lg my-5">
-		<div class="container">
-			<ul class="navbar-nav me-auto">
-				<li class="nav-item">
-					<InertiaLink class="nav-link" :href="route('admin.index')">Admin index</InertiaLink>
-				</li>
-			</ul>
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item">
-					<InertiaLink class="btn btn-outline-secondary nav-link nav-link-secondary" :href="route('index')">
-						Home
-					</InertiaLink>
-				</li>
-			</ul>
-		</div>
-	</nav>
+    <nav class="flex justify-between items-center container mx-auto py-8">
+        <div>
+            <NavLink :link="route('index')" label="Home"/>
+        </div>
+        <div class="ms-auto">
+            <NavLink :link="route('admin.index')" label="Admin" secondary/>
+        </div>
+    </nav>
 
-	<div class="container my-5">
-		<slot/>
-	</div>
+    <div class="container mx-auto my-5">
+        <slot/>
+    </div>
 </template>
 
 <script setup>
 
-</script>
+import NavLink from '@/Components/NavLink.vue';</script>
 
 <script>
 export default { name: 'Admin' };

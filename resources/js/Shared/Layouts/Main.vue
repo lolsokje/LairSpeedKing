@@ -1,49 +1,39 @@
 <template>
-	<nav class="navbar navbar-expand-lg my-5">
-		<div class="container">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<InertiaLink :href="route('index')" class="nav-link">Home</InertiaLink>
-				</li>
-				<li class="nav-item" v-if="user && hasActiveRound">
-					<InertiaLink :href="route('times.create')" class="nav-link text-secondary">
-						Submit a time
-					</InertiaLink>
-				</li>
-				<li class="nav-item" v-if="hasActiveRound">
-					<InertiaLink :href="route('leaderboard')" class="nav-link text-secondary">
-						Current round leaderboard
-					</InertiaLink>
-				</li>
-			</ul>
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item" v-if="!user">
-					<a class="nav-link" :href="route('auth.discord.redirect')">Login</a>
-				</li>
-				<li class="nav-item" v-else>
-					<InertiaLink :href="route('auth.logout')" as="button" method="POST"
-								 class="nav-link btn btn-link me-3">
-						Logout
-					</InertiaLink>
-				</li>
-				<li class="nav-item" v-if="user && user.is_admin">
-					<InertiaLink :href="route('admin.index')"
-								 class="btn btn-outline-secondary nav-link nav-link-secondary">
-						Admin <span class="badge bg-danger ms-2" v-if="pendingLapTimes">{{ pendingLapTimes }}</span>
-					</InertiaLink>
-				</li>
-			</ul>
-		</div>
-	</nav>
+    <div class="text-white">
+        <nav class="flex justify-between items-center container mx-auto py-8">
+            <div>
+                <NavLink :link="route('index')" label="Home"/>
+                <template v-if="hasActiveRound">
+                    <NavLink v-if="user" :link="route('times.create')" label="Submit a time" secondary/>
+                    <NavLink :link="route('leaderboard')" label="Current round leaderboard" secondary/>
+                </template>
+            </div>
+            <div>
+                <template v-if="!user">
+                    <a :href="route('auth.discord.redirect')" class="uppercase font-bold">Login</a>
+                </template>
+                <template v-else>
+                    <div class="flex items-center">
+                        <NavLink :link="route('auth.logout')" label="Logout" as="button" method="POST"/>
+                        <div class="flex items-center">
+                            <NavLink :link="route('admin.index')" label="Admin" secondary/>
+                            <div class="bg-red-500 py-1 px-2 rounded text-xs">1</div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </nav>
+    </div>
 
-	<div class="container">
-		<slot/>
-	</div>
+    <div class="container mx-auto">
+        <slot/>
+    </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
+import NavLink from '@/Components/NavLink.vue';
 
 const user = computed(() => usePage().props.value.auth.user);
 const hasActiveRound = computed(() => usePage().props.value.has_active_round);

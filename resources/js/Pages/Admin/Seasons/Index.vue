@@ -1,46 +1,45 @@
 <template>
-	<BackToOverviewButton :link="route('admin.index')"/>
+    <BackToOverviewButton :link="route('admin.index')"/>
 
-	<Header text="Seasons"/>
+    <Header text="Seasons"/>
 
-	<InertiaLink :href="route('admin.seasons.create')" class="btn btn-primary mb-4">Add season</InertiaLink>
+    <ButtonLink :href="route('admin.seasons.create')" label="Add season"/>
 
-	<div class="row" v-if="seasons.length">
-		<div class="col-lg-4 col-md-6 col-12 mb-4" v-for="season in seasons" :key="season.id">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">{{ season.name }}</h5>
-					<h6 class="card-subtitle text-muted mb-2">{{ season.date_range }}</h6>
-					<p class="card-text mb-0">Rounds: {{ season.rounds_count }}</p>
-					<p class="card-text mb-0">Participants: 0</p>
-					<p class="card-text">Times submitted: 0</p>
+    <CardContainer v-if="seasons.length">
+        <Card v-for="season in seasons" :key="season.id" :season="season" :size="CardSize.LARGE">
+            <h5>{{ season.name }}</h5>
+            <h6 class="text-slate-500 mb-4">{{ season.date_range }}</h6>
+            <p>Rounds: {{ season.rounds_count }}</p>
+            <p>Participants: 0</p>
+            <p>Times submitted: 0</p>
 
-					<div class="d-flex">
-						<InertiaLink :href="route('admin.seasons.show', [season])" class="btn btn-primary">
-							View season
-						</InertiaLink>
-						<InertiaLink :href="route('admin.seasons.edit', [season])"
-									 class="btn btn-outline-secondary ms-auto">
-							Edit season
-						</InertiaLink>
-					</div>
-				</div>
-				<div class="card-footer status" :class="'status-' + season.status.toLowerCase()">
-					{{ season.status }}
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="flex justify-between mt-8">
+                <ButtonLink :href="route('admin.seasons.show', [season])" label="View season"/>
+                <ButtonLink :href="route('admin.seasons.edit', [season])"
+                            label="Edit season"
+                            secondary
+                />
+            </div>
+            <template #footer>
+                <CardStatusFooter :status="season.status"/>
+            </template>
+        </Card>
+    </CardContainer>
 </template>
 
 <script setup>
 import BackToOverviewButton from '@/Shared/BackToOverviewButton.vue';
 import Header from '@/Shared/Header.vue';
+import CardContainer from '@/Components/CardContainer.vue';
+import CardStatusFooter from '@/Components/CardStatusFooter.vue';
+import CardSize from '@/Enums/CardSize.js';
+import Card from '@/Components/Card.vue';
+import ButtonLink from '@/Components/ButtonLink.vue';
 
 const props = defineProps({
-	seasons: {
-		type: Array,
-		required: true,
-	},
+    seasons: {
+        type: Array,
+        required: true,
+    },
 });
 </script>
