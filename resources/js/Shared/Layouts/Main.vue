@@ -17,7 +17,9 @@
                         <NavLink :link="route('auth.logout')" label="Logout" as="button" method="POST"/>
                         <div class="flex items-center">
                             <NavLink :link="route('admin.index')" label="Admin" secondary/>
-                            <div class="bg-red-500 py-1 px-2 rounded text-xs">1</div>
+                            <div class="bg-red-500 py-1 px-2 rounded text-xs" v-if="pendingLapTimes">
+                                {{ pendingLapTimes }}
+                            </div>
                         </div>
                     </div>
                 </template>

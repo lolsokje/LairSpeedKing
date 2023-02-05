@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\LapTimeStatus;
 use App\Traits\DateRangeAttribute;
 use App\Traits\Snowflake;
 use App\Traits\StatusAttribute;
@@ -86,9 +85,9 @@ class Round extends Model
     public function timesForLeaderboard(): array
     {
         $times = $this->times()
+                      ->approved()
                       ->with('user')
                       ->orderBy('lap_time')
-                      ->where('status', LapTimeStatus::APPROVED)
                       ->get();
 
         return $times->unique('user_id')->values()->toArray();

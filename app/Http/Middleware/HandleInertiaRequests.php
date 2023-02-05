@@ -22,7 +22,7 @@ class HandleInertiaRequests extends Middleware
      *
      * @see https://inertiajs.com/asset-versioning
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return string|null
      */
@@ -36,18 +36,18 @@ class HandleInertiaRequests extends Middleware
      *
      * @see https://inertiajs.com/shared-data
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return array
      */
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'auth.user' => fn() => $request->user()
+            'auth.user' => fn () => $request->user()
                 ? $request->user()->only('id', 'username', 'avatar', 'is_admin')
                 : null,
-            'pending_laptimes' => fn() => LapTime::pending()->count(),
-            'has_active_round' => fn() => Round::active()->first() !== null,
+            'pending_laptimes' => fn () => LapTime::pending()->count(),
+            'has_active_round' => fn () => Round::active()->first() !== null,
         ]);
     }
 }
